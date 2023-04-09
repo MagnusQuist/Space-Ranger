@@ -1,3 +1,5 @@
-dk\sdu\srm\main\Game.class
+dk\sdu\srm\main\Screens\PlayScreen.class
 module-info.class
+dk\sdu\srm\main\Scenes\Hud.class
+dk\sdu\srm\main\SpaceGame.class
 dk\sdu\srm\main\Main.class

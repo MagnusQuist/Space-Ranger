@@ -11,6 +11,8 @@
     <modules>
         <module>Core</module>
         <module>Common</module>
+        <module>Player</module>
+        <module>Map</module>
     </modules>
 
     <properties>
@@ -27,6 +29,11 @@
                 <groupId>dk.sdu.mmmi.cbse</groupId>
                 <artifactId>shadedlibgdx</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.badlogicgames.gdx</groupId>
+                <artifactId>gdx</artifactId>
+                <version>1.6.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,10 @@
 dk\sdu\srm\common\services\IGamePluginService.class
-dk\sdu\srm\common\services\IPostEntityProcessingService.class
+dk\sdu\srm\common\util\SPILocator.class
+dk\sdu\srm\common\data\GameData.class
 module-info.class
 dk\sdu\srm\common\services\IEntityProcessingService.class
 dk\sdu\srm\common\data\Entity.class
+dk\sdu\srm\common\data\World.class
+dk\sdu\srm\common\services\IPostEntityProcessingService.class
+dk\sdu\srm\common\data\entityparts\AssetsManager.class
 dk\sdu\srm\common\events\Event.class

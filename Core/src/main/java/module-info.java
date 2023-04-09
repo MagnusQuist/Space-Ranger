@@ -1,7 +1,11 @@
+import dk.sdu.srm.common.services.IEntityProcessingService;
+import dk.sdu.srm.common.services.IGamePluginService;
+import dk.sdu.srm.common.services.IPostEntityProcessingService;
+
 module Core {
     requires Common;
     requires com.badlogic.gdx;
-    uses dk.sdu.srm.common.services.IGamePluginService;
-    uses dk.sdu.srm.common.services.IEntityProcessingService;
-    uses dk.sdu.srm.common.services.IPostEntityProcessingService;
+    uses IGamePluginService;
+    uses IEntityProcessingService;
+    uses IPostEntityProcessingService;
 }

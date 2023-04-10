@@ -30,12 +30,10 @@ public class SpaceGame extends Game  {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        System.out.println("SpaceGame");
 
         System.out.println(getPluginServices());
 
         for (IGamePluginService iGamePlugin : getPluginServices()) {
-            System.out.println("køre denne her?");
 
             iGamePlugin.start(gameData, world);
         }
@@ -43,6 +41,7 @@ public class SpaceGame extends Game  {
 
     @Override
     public void render() {
+        update();
         super.render();
     }
 

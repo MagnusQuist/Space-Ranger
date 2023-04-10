@@ -14,8 +14,6 @@ import dk.sdu.srm.common.services.IEntityProcessingService;
 
 public class PlayerControlSystem extends InputAdapter implements IEntityProcessingService {
 
-    Stage stage;
-    SpriteBatch batch;
     Texture playerModel;
     float speed = 50.0f;
     float playerx = 0;
@@ -23,17 +21,11 @@ public class PlayerControlSystem extends InputAdapter implements IEntityProcessi
 
     public void showModel(Entity entity) {
         playerModel = new Texture(Gdx.files.internal("assets/badlogic.jpg"));
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
-        batch = new SpriteBatch();
         System.out.println("Jeg er PlayerControlSystem.show()");
     }
+
     @Override
     public void process(GameData gameData, World world) {
-        System.out.println("Jeg er PlayerControlSystem.render()");
-        batch.begin();
-        stage.draw();
-        batch.draw(playerModel,playerx,playery);
         if(Gdx.input.isKeyPressed(Input.Keys.W)){
             System.out.println("W");
             playery+= Gdx.graphics.getDeltaTime()*speed;
@@ -50,7 +42,5 @@ public class PlayerControlSystem extends InputAdapter implements IEntityProcessi
             System.out.println("A");
             playerx+= Gdx.graphics.getDeltaTime()*speed;
         }
-        batch.end();
     }
-
 }

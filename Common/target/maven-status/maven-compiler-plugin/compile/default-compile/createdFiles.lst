@@ -5,6 +5,7 @@ module-info.class
 dk\sdu\srm\common\services\IEntityProcessingService.class
 dk\sdu\srm\common\data\Entity.class
 dk\sdu\srm\common\data\World.class
+dk\sdu\srm\common\data\entityparts\AssetsManager$1.class
 dk\sdu\srm\common\services\IPostEntityProcessingService.class
 dk\sdu\srm\common\data\entityparts\AssetsManager.class
 dk\sdu\srm\common\events\Event.class

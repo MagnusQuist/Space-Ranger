@@ -9,26 +9,27 @@ import dk.sdu.srm.common.services.IGamePluginService;
 
 public class PlayerPlugin implements IGamePluginService {
     private Entity player;
-    Texture texture;
 
     public PlayerPlugin() {
     }
-    @Override
-    public void start(GameData gameData, World world) {
-        System.out.println("alo");
-        texture = new Texture(Gdx.files.internal("assets/Tandbørste.png"));
-    }
 
     @Override
-    public void stop(GameData gameData, World world) {
-        world.removeEntity(player);
+    public void start(GameData gameData, World world) {
+        System.out.println("jeg er PlayerPlugin.start()");
+        player = createPlayer(gameData);
+
+        world.addEntity(player);
     }
 
     private Entity createPlayer(GameData gameData){
 
         Entity playerMan = new Player();
 
-
         return playerMan;
+    }
+
+    @Override
+    public void stop(GameData gameData, World world) {
+        world.removeEntity(player);
     }
 }

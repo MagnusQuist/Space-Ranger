@@ -10,6 +10,6 @@ public class Main {
         config.setTitle("Space Ranger Man");
         config.setWindowSizeLimits(1000,600,1000,600);
 
-        new Lwjgl3Application(new Game(), config);
+        new Lwjgl3Application(new SpaceGame(), config);
     }
 }

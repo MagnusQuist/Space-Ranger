@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/AI/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AI/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Bullet/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Bullet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonAI/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonAI/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonBullet/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonBullet/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Enemy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Enemy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Map/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Map/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Weapon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Weapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

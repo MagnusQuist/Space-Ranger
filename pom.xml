@@ -13,6 +13,14 @@
         <module>Common</module>
         <module>Player</module>
         <module>Map</module>
+        <module>Enemy</module>
+        <module>Bullet</module>
+        <module>CommonBullet</module>
+        <module>Weapon</module>
+        <module>CommonWeapon</module>
+        <module>CommonEnemy</module>
+        <module>AI</module>
+        <module>CommonAI</module>
     </modules>
 
     <properties>

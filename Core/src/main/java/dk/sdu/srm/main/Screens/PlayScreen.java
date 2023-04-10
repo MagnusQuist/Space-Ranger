@@ -1,19 +1,16 @@
 package dk.sdu.srm.main.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-//import com.badlogic.gdx.utils.viewport.StretchViewport;
-//import com.badlogic.gdx.utils.viewport.Viewport;
 import dk.sdu.srm.main.SpaceGame;
 
-public class PlayScreen implements Screen  {
-    private SpaceGame game;
+public class PlayScreen extends ScreenAdapter {
+    SpaceGame game;
     Texture texture;
     private OrthographicCamera gamecam;
-    //private Viewport gameport;
 
     public PlayScreen(SpaceGame game){
         this.game = game;

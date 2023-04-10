@@ -6,8 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Bullet" />
         <module name="Player" />
+        <module name="CommonEnemy" />
+        <module name="CommonWeapon" />
+        <module name="CommonAI" />
+        <module name="Enemy" />
+        <module name="AI" />
         <module name="Map" />
+        <module name="CommonBullet" />
+        <module name="Weapon" />
         <module name="Core" />
         <module name="Common" />
       </profile>

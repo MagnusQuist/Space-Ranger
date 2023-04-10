@@ -1,5 +1,6 @@
 C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\events\Event.java
 C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\GameData.java
+C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\Health.java
 C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\Entity.java
 C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IPostEntityProcessingService.java
 C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\util\SPILocator.java

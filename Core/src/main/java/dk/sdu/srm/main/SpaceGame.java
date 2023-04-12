@@ -46,7 +46,6 @@ public class SpaceGame extends Game {
         Gdx.gl.glClear(Gdx.gl.GL_COLOR_BUFFER_BIT);
         gsm.update(Gdx.graphics.getDeltaTime());
         gsm.render(batch);
-        update();
     }
 
     @Override
@@ -54,17 +53,8 @@ public class SpaceGame extends Game {
         batch.dispose();
     }
 
-    private void update(){
-        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
-            entityProcessorService.process(gameData, world);
-        }
-    }
 
     private Collection<? extends IGamePluginService> getPluginServices() {
         return ServiceLoader.load(IGamePluginService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
-    }
-
-    private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
-        return ServiceLoader.load(IEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }

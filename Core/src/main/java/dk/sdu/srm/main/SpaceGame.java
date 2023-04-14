@@ -3,6 +3,8 @@ package dk.sdu.srm.main;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.Map;
+import com.badlogic.gdx.maps.MapLayer;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.services.IEntityProcessingService;
@@ -21,7 +23,6 @@ public class SpaceGame extends Game {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 480;
     public static final String TITLE = "Space Game";
-
     private GameStateManager gsm;
     private SpriteBatch batch;
     private final GameData gameData = new GameData();

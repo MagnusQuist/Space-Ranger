@@ -15,9 +15,7 @@ public class PlayScreen extends ScreenAdapter {
     public PlayScreen(SpaceGame game){
         this.game = game;
         System.out.println("hello");
-        texture = new Texture(Gdx.files.internal("assets/Tandbørste.png"));
         gamecam = new OrthographicCamera(400, 400);
-        //gameport = new StretchViewport(400,800,gamecam);
     }
 
     @Override
@@ -27,12 +25,8 @@ public class PlayScreen extends ScreenAdapter {
 
     @Override
     public void render(float v) {
-        Gdx.gl.glClearColor(1,0,0,1);
+        Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       // game.batch.setProjectionMatrix(gamecam.combined);
-        game.batch.begin();
-        game.batch.draw(texture, 0, 0);
-        game.batch.end();
     }
 
     @Override

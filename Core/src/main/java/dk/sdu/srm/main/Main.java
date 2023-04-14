@@ -7,9 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-        config.setTitle("Space Ranger Man");
-        config.setWindowSizeLimits(1000,600,1000,600);
-
+        config.setTitle(SpaceGame.TITLE);
+        config.setWindowedMode(SpaceGame.WIDTH, SpaceGame.HEIGHT);
+        config.setResizable(false);
         new Lwjgl3Application(new SpaceGame(), config);
     }
 }

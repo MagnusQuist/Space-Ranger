@@ -23,7 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Core" options="" />
+      <module name="Core" options="--add-exports com.badlogic.gdx/com.badlogic.gdx.scenes.scene2d=Core" />
       <module name="Player" options="" />
     </option>
   </component>

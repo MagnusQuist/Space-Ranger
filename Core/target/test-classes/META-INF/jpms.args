@@ -1,4 +1,0 @@
---patch-module
-Core=_
---add-reads
-Core=ALL-UNNAMED

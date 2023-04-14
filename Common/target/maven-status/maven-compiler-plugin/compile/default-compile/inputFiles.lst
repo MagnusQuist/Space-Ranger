@@ -1,12 +1,13 @@
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\events\Event.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\GameData.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\Health.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\Entity.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IPostEntityProcessingService.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\util\SPILocator.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IEntityProcessingService.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IGamePluginService.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\World.java
-C:\Git\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\AssetsManager.java
-C:\Git\Space-Ranger\Common\src\main\java\module-info.java
-
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\World.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\events\Event.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IEntityProcessingService.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IGamePluginService.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IPostEntityProcessingService.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\EntityPart.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\Health.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\GameData.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\PositionPart.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\util\SPILocator.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\module-info.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\Entity.java
+C:\Users\shjar\Desktop\Uni\4. semester\Semester Projekt\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\AssetsManager.java

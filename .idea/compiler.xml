@@ -12,6 +12,16 @@
         <module name="Common" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AI" target="9" />
+      <module name="Bullet" target="9" />
+      <module name="CommonAI" target="9" />
+      <module name="CommonBullet" target="9" />
+      <module name="CommonEnemy" target="9" />
+      <module name="CommonWeapon" target="9" />
+      <module name="Enemy" target="9" />
+      <module name="Weapon" target="9" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

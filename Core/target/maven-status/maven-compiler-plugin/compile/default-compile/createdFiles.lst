@@ -1,9 +1,9 @@
-dk\sdu\srm\main\states\MenuState.class
+dk/sdu/srm/main/Main.class
 module-info.class
-dk\sdu\srm\main\SpaceGame.class
-dk\sdu\srm\main\Screens\PlayScreen.class
-dk\sdu\srm\main\states\State.class
-dk\sdu\srm\managers\GameStateManager.class
-dk\sdu\srm\main\Scenes\Hud.class
-dk\sdu\srm\main\states\PlayState.class
-dk\sdu\srm\main\Main.class
+dk/sdu/srm/main/states/PlayState.class
+dk/sdu/srm/main/states/State.class
+dk/sdu/srm/main/states/MenuState.class
+dk/sdu/srm/managers/GameStateManager.class
+dk/sdu/srm/main/Screens/PlayScreen.class
+dk/sdu/srm/main/Scenes/Hud.class
+dk/sdu/srm/main/SpaceGame.class

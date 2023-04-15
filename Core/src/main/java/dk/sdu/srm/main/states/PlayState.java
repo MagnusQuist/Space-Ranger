@@ -1,6 +1,8 @@
 package dk.sdu.srm.main.states;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.services.IEntityProcessingService;
@@ -13,6 +15,7 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayState extends State {
+    private float elapsedTime;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -34,10 +37,12 @@ public class PlayState extends State {
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
+        elapsedTime += Gdx.graphics.getDeltaTime();
         for (Entity e : gsm.world.getEntities()) {
             PositionPart pos = e.getPart(PositionPart.class);
             sb.begin();
-            sb.draw(e.getTexture(), pos.getX(), pos.getY());
+            TextureRegion frame = e.getAnimationHandler().getFrame();
+            sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth(), frame.getRegionHeight());
             sb.end();
         }
     }

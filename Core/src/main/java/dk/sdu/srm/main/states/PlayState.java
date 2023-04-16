@@ -41,7 +41,9 @@ public class PlayState extends State {
         for (Entity e : gsm.world.getEntities()) {
             PositionPart pos = e.getPart(PositionPart.class);
             sb.begin();
-            TextureRegion frame = e.getAnimationHandler().getFrame();
+            TextureRegion frame = e.animationHandler.getFrame();
+            if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }
+            if (pos.getFacingState() == 1 && frame.isFlipX()) { frame.flip(true, false); }
             sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth(), frame.getRegionHeight());
             sb.end();
         }

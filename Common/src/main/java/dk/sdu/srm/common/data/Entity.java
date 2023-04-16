@@ -9,8 +9,7 @@ import dk.sdu.srm.common.data.entityparts.EntityPart;
 import dk.sdu.srm.common.util.AnimationHandler;
 
 import java.io.Serializable;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Entity implements Serializable {
@@ -20,11 +19,12 @@ public class Entity implements Serializable {
     private Texture texture;
     private Map<Class, EntityPart> parts;
 
-    private AnimationHandler animationHandler;
+    public float FRAME_TIME = 1 / 15f;
+    public TextureAtlas characterAtlas;
+    public AnimationHandler animationHandler;
 
     public Entity() {
         parts = new ConcurrentHashMap<>();
-        animationHandler = new AnimationHandler();
     }
 
     public void add(EntityPart part) {
@@ -65,9 +65,5 @@ public class Entity implements Serializable {
 
     public String getID() {
         return ID.toString();
-    }
-
-    public AnimationHandler getAnimationHandler() {
-        return animationHandler;
     }
 }

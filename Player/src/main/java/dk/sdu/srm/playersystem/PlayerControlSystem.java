@@ -13,7 +13,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
-        System.out.println("PlayerControlSystem.process()");
+        System.out.println("Jeg er en lille player :))");
         for (Entity player : world.getEntities(Player.class)) {
             PositionPart positionPart = player.getPart(PositionPart.class);
             positionPart.process(gameData, player);

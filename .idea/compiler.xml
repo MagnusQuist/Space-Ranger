@@ -23,7 +23,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+<<<<<<< HEAD
       <module name="Core" options="" />
+=======
+      <module name="Core" options="--add-exports com.badlogic.gdx/com.badlogic.gdx.maps.tiled=Core" />
+>>>>>>> db711907957ac2ef40a1ab8c23ee38f648e3a0c7
       <module name="Player" options="" />
     </option>
   </component>

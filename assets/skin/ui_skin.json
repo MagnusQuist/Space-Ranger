@@ -1,0 +1,45 @@
+{
+BitmapFont: {
+	EdgeOfTheGalaxyRegular: {
+		file: EdgeOfTheGalaxyRegular.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+}
+Color: {
+	primary_text: {
+		hex: f5caaaff
+	}
+	white: {
+		hex: ffffffff
+	}
+}
+ButtonStyle: {
+	default: {
+		up: menu_btn_up
+		down: menu_btn_down
+		over: menu_btn_down
+	}
+}
+LabelStyle: {
+	default: {
+		font: EdgeOfTheGalaxyRegular
+		fontColor: white
+	}
+}
+TextButtonStyle: {
+	default: {
+		font: EdgeOfTheGalaxyRegular
+		fontColor: primary_text
+		up: menu_btn_up
+		down: menu_btn_down
+		over: menu_btn_down
+	}
+}
+TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+}

@@ -1,4 +1,0 @@
---patch-module
-CommonEnemy=_
---add-reads
-CommonEnemy=ALL-UNNAMED

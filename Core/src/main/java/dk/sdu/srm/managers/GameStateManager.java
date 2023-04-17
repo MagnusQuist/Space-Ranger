@@ -22,7 +22,7 @@ public class GameStateManager {
         states.push(state);
     }
 
-    public void pop() { states.pop(); }
+    public void pop() { states.pop().dispose(); }
 
     public void set(State state) {
         states.pop();

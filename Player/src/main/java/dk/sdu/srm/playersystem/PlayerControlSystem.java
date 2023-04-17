@@ -33,7 +33,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             player.animationHandler.setCurrentAnimation("up");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            positionPart.setFacingState(1);
+            positionPart.setFacingState(-1);
             playery -= speed * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("down");
         }

@@ -10,10 +10,14 @@
         <module name="Player" />
         <module name="CommonEnemy" />
         <module name="CommonAI" />
+        <module name="CommonWeapon" />
         <module name="Enemy" />
         <module name="AI" />
+        <module name="Map" />
         <module name="CommonBullet" />
+        <module name="Weapon" />
         <module name="Core" />
+        <module name="Common" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,0 +1,4 @@
+--patch-module
+CommonBullet=_
+--add-reads
+CommonBullet=ALL-UNNAMED

@@ -9,15 +9,11 @@
         <module name="Bullet" />
         <module name="Player" />
         <module name="CommonEnemy" />
-        <module name="CommonWeapon" />
         <module name="CommonAI" />
         <module name="Enemy" />
         <module name="AI" />
-        <module name="Map" />
         <module name="CommonBullet" />
-        <module name="Weapon" />
         <module name="Core" />
-        <module name="Common" />
       </profile>
     </annotationProcessing>
   </component>

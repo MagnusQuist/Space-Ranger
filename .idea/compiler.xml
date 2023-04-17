@@ -12,6 +12,7 @@
         <module name="CommonAI" />
         <module name="Enemy" />
         <module name="AI" />
+        <module name="Map" />
         <module name="CommonBullet" />
         <module name="Core" />
       </profile>

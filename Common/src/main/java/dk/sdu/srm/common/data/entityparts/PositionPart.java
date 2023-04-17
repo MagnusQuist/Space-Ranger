@@ -7,6 +7,8 @@ public class PositionPart implements EntityPart {
     private float x;
     private float y;
 
+    private int facingState = 0;
+
     public PositionPart(float x, float y) {
         this.x = x;
         this.y = y;
@@ -20,12 +22,20 @@ public class PositionPart implements EntityPart {
         return y;
     }
 
+    public int getFacingState() {
+        return facingState;
+    }
+
     public void setX(float newX) {
         this.x = newX;
     }
 
     public void setY(float newY) {
         this.y = newY;
+    }
+
+    public void setFacingState(int newFacingState) {
+        this.facingState = newFacingState;
     }
 
     public void setPosition(float newX, float newY) {

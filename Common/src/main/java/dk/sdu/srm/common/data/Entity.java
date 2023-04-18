@@ -1,5 +1,6 @@
 package dk.sdu.srm.common.data;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,6 +18,8 @@ public class Entity implements Serializable {
     private int health;
     private AssetsManager assets;
     private Texture texture;
+
+    private Sprite sprite;
     private Map<Class, EntityPart> parts;
 
     public float FRAME_TIME = 1 / 15f;
@@ -49,6 +52,12 @@ public class Entity implements Serializable {
 
     public void setTexture(Texture texture) {
         this.texture = texture;
+    }
+    public Sprite getSprite() {
+        return sprite;
+    }
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     public int getHealth() {

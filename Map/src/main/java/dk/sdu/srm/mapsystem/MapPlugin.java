@@ -7,6 +7,7 @@ import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.services.IGamePluginService;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class MapPlugin implements IGamePluginService {
 
@@ -14,6 +15,7 @@ public class MapPlugin implements IGamePluginService {
     private TmxMapLoader mapLoader;
     private TiledMap tiledMap;
     private OrthographicCamera gamecam;
+    private OrthogonalTiledMapRenderer renderer;
 
     //private OrthogonalTiledMapRenderer renderer;
 
@@ -21,8 +23,10 @@ public class MapPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
         mapLoader = new TmxMapLoader();
         tiledMap = mapLoader.load("assets/tilemap.tmx");
-        //renderer = new OrthogonalTiledMapRenderer(tiledMap);
-        gamecam.position.set();
+        renderer = new OrthogonalTiledMapRenderer(tiledMap);
+        //renderer.setView(gamecam);
+        //renderer.render();
+        //gamecam.position.set();
 
     }
 

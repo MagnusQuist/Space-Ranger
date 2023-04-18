@@ -46,8 +46,9 @@ public class PlayState extends State {
             if (pos.getFacingState() == 1 && frame.isFlipX()) { frame.flip(true, false); }
             sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth(), frame.getRegionHeight());
             sb.end();
+            }
         }
-    }
+
 
     @Override
     public void dispose() {
@@ -57,4 +58,6 @@ public class PlayState extends State {
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
         return ServiceLoader.load(IEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
+
+
 }

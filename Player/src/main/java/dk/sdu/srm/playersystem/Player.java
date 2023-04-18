@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.util.AnimationHandler;
 
+import static dk.sdu.srm.common.data.entityparts.AssetsManager.PLAYER;
+
 public class Player extends Entity {
 
     public Player() {
@@ -16,12 +18,10 @@ public class Player extends Entity {
         AssetsManager.manager.update();
         AssetsManager.manager.finishLoading();
 
-       // Texture texture = AssetsManager.manager.get(AssetsManager.player);
-
+       TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
         this.setHealth(100);
-        this.setTexture(AssetsManager.manager.get(AssetsManager.player));
 
-        characterAtlas = new TextureAtlas("assets/player/animations/player.atlas");
+        characterAtlas = texture;
 
         animationHandler = new AnimationHandler();
         animationHandler.add("idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("idle")));

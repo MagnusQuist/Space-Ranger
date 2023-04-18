@@ -10,6 +10,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/CommonWeapon/pom.xml" />
+        <option value="$PROJECT_DIR$/Map/pom.xml" />
       </list>
     </option>
     <option name="ignoredPathMasks">

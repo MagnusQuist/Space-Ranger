@@ -1,13 +1,16 @@
 package dk.sdu.srm.common.data;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import com.badlogic.gdx.graphics.Texture;
 import dk.sdu.srm.common.data.entityparts.EntityPart;
+import dk.sdu.srm.common.util.AnimationHandler;
 
 import java.io.Serializable;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Entity implements Serializable {
@@ -19,8 +22,9 @@ public class Entity implements Serializable {
     private Sprite sprite;
     private Map<Class, EntityPart> parts;
 
-    private float x;
-    private float y;
+    public float FRAME_TIME = 1 / 15f;
+    public TextureAtlas characterAtlas;
+    public AnimationHandler animationHandler;
 
     public Entity() {
         parts = new ConcurrentHashMap<>();

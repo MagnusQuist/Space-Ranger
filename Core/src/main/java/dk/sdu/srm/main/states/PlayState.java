@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.enemy.EnemyType;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.main.SpaceGame;
 import dk.sdu.srm.managers.GameStateManager;
@@ -19,7 +20,7 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, SpaceGame.WIDTH / 2, SpaceGame.HEIGHT / 2);
+        cam.setToOrtho(false, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
     }
     @Override
     protected void handleInput() {

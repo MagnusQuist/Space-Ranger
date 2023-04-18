@@ -20,7 +20,9 @@ public class Player extends Entity {
 
         this.setHealth(100);
         this.setTexture(AssetsManager.manager.get(AssetsManager.player));
+
         characterAtlas = new TextureAtlas("assets/player/animations/player.atlas");
+
         animationHandler = new AnimationHandler();
         animationHandler.add("idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("idle")));
         animationHandler.add("side_idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("side_idle")));

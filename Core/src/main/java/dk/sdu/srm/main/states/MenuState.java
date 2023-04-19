@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import dk.sdu.srm.managers.GameStateManager;
 
 public class MenuState extends State {
@@ -25,7 +26,16 @@ public class MenuState extends State {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        skin = new Skin(Gdx.files.internal("assets/skin/ui_skin.json"));
+
+        AssetsManager.loadTexture();
+        AssetsManager.manager.update();
+        AssetsManager.manager.finishLoading();
+
+        Skin uiSkin = AssetsManager.manager.get(AssetsManager.UI);
+        Texture bg = AssetsManager.manager.get(AssetsManager.BACKGROUND);
+        Texture Title = AssetsManager.manager.get(AssetsManager.LOGO);
+
+        skin = uiSkin;
         stage = new Stage(new ScreenViewport());
 
         table = new Table();
@@ -46,8 +56,8 @@ public class MenuState extends State {
 
         stage.addActor(table);
 
-        background = new Texture(Gdx.files.internal("assets/menu/bg.png"));
-        logo = new Texture(Gdx.files.internal("assets/menu/logo.png"));
+        background = bg;
+        logo = Title;
         Gdx.input.setInputProcessor(stage);
     }
 

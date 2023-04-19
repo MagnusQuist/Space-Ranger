@@ -1,15 +1,28 @@
 package dk.sdu.srm.playersystem;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.util.AnimationHandler;
 
+import static dk.sdu.srm.common.data.entityparts.AssetsManager.PLAYER;
+
 public class Player extends Entity {
 
     public Player() {
+        AssetsManager.loadTexture();
+        AssetsManager.manager.update();
+        AssetsManager.manager.finishLoading();
+
+       TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
         this.setHealth(100);
-        characterAtlas = new TextureAtlas("assets/player/animations/player.atlas");
+
+        characterAtlas = texture;
+
         animationHandler = new AnimationHandler();
         animationHandler.add("idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("idle")));
         animationHandler.add("side_idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("side_idle")));

@@ -7,6 +7,7 @@ module Enemy {
     requires Common;
     requires CommonEnemy;
     requires CommonAI;
+    requires com.badlogic.gdx;
     provides IEntityProcessingService with EnemyControlSystem;
     provides IGamePluginService with EnemyPlugin;
 }

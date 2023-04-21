@@ -44,7 +44,7 @@ public class PlayState extends State {
             sb.begin();
             TextureRegion frame = e.animationHandler.getFrame();
             if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }
-            if (pos.getFacingState() == 1 && frame.isFlipX()) { frame.flip(true, false); }
+            if (pos.getFacingState() == 2 && frame.isFlipX()) { frame.flip(true, false); }
             sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth(), frame.getRegionHeight());
             sb.end();
             }

@@ -1,10 +1,12 @@
-package dk.sdu.srm.common.enemy;
+package dk.sdu.srm.enemysystem;
 
 import com.badlogic.gdx.Gdx;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.enemy.Enemy;
+import dk.sdu.srm.common.enemy.EnemyType;
 
 import java.util.concurrent.ThreadLocalRandom;
 

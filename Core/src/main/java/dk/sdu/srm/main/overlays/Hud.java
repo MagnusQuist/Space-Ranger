@@ -19,7 +19,7 @@ import dk.sdu.srm.playersystem.Player;
 public class Hud implements Disposable {
     public Stage stage;
     private Skin skin;
-    private Entity player;
+    private Entity player = null;
     private TextureAtlas hudAtlas;
     private Viewport viewport;
     private static Label healthLabel;
@@ -53,27 +53,29 @@ public class Hud implements Disposable {
         table.setPosition(0, Gdx.graphics.getHeight());
         table.padTop(20);
 
-        healthLabel = new Label("Health", skin, "ui_text");
-        healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
-        heart = new Image(hudAtlas.createSprite("heart"));
+        if (player != null) {
+            healthLabel = new Label("Health", skin, "ui_text");
+            healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
+            heart = new Image(hudAtlas.createSprite("heart"));
 
-        coinLabel = new Label("Coins", skin, "ui_text");
-        coinCount = new Label(Integer.toString(player.getCoins()), skin, "ui_text");
-        coin = new Image(hudAtlas.createSprite("coin"));
+            coinLabel = new Label("Coins", skin, "ui_text");
+            coinCount = new Label(Integer.toString(player.getCoins()), skin, "ui_text");
+            coin = new Image(hudAtlas.createSprite("coin"));
 
-        armorLabel = new Label("Armor", skin, "ui_text");
-        armorCount = new Label(Integer.toString(player.getArmor()), skin, "ui_text");
-        armor = new Image(hudAtlas.createSprite("armor"));
+            armorLabel = new Label("Armor", skin, "ui_text");
+            armorCount = new Label(Integer.toString(player.getArmor()), skin, "ui_text");
+            armor = new Image(hudAtlas.createSprite("armor"));
 
-        table.row();
-        table.add(heart).size(18, 18).padRight(6);
-        table.add(healthCount).padRight(20);
+            table.row();
+            table.add(heart).size(18, 18).padRight(6);
+            table.add(healthCount).padRight(20);
 
-        table.add(coin).size(14, 18).padRight(6);
-        table.add(coinCount).padRight(20);
+            table.add(coin).size(14, 18).padRight(6);
+            table.add(coinCount).padRight(20);
 
-        table.add(armor).size(18, 18).padRight(6);;
-        table.add(armorCount);
+            table.add(armor).size(18, 18).padRight(6);;
+            table.add(armorCount);
+        }
 
         stage.addActor(table);
     }

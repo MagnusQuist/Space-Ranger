@@ -104,6 +104,26 @@ atlasData: {
 			type: FONT
 			hidden: false
 		}
+		{
+			file: C:/Users/cloud/Downloads/zekton rg.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: zekton rg
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			tvgData: null
+			type: FONT
+			hidden: false
+		}
 	]
 }
 jsonData: {
@@ -137,6 +157,14 @@ jsonData: {
 			markupEnabled: false
 			scaling: -1
 			file: C:/UNI/SEM4/Space-Ranger/assets/fonts/EdgeOfTheGalaxyRegular.fnt
+		}
+		{
+			class: com.ray3k.skincomposer.data.FontData
+			name: zekton
+			flip: false
+			markupEnabled: false
+			scaling: -1
+			file: C:/Users/cloud/Downloads/zekton rg.fnt
 		}
 	]
 	freeTypeFonts: []

@@ -12,7 +12,7 @@ public class EnemyPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
         // This should be done by the map component
         EnemySpawner spawner = new EnemySpawner();
-        spawner.createEnemies(gameData, world, EnemyType.SLIME, 1);
+        spawner.createEnemies(gameData, world, EnemyType.SLIME, 3);
     }
 
     @Override

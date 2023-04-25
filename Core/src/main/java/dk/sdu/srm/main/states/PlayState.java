@@ -5,9 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
-import dk.sdu.srm.common.enemy.EnemyType;
 import dk.sdu.srm.common.services.IEntityProcessingService;
-import dk.sdu.srm.main.SpaceGame;
+import dk.sdu.srm.main.overlays.Hud;
 import dk.sdu.srm.managers.GameStateManager;
 
 import java.util.Collection;
@@ -16,11 +15,14 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayState extends State {
-    private float elapsedTime;
+    private float elapsedTime = 0;
+    private Hud hud;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+
+        hud = new Hud(gsm.gameData, gsm.world);
     }
     @Override
     protected void handleInput() {
@@ -30,6 +32,7 @@ public class PlayState extends State {
     @Override
     public void update(float dt) {
         handleInput();
+        hud.update(dt);
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gsm.gameData, gsm.world);
         }
@@ -47,9 +50,11 @@ public class PlayState extends State {
             if (pos.getFacingState() == 1 && frame.isFlipX()) { frame.flip(true, false); }
             sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth(), frame.getRegionHeight());
             sb.end();
-            }
         }
 
+        sb.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
+    }
 
     @Override
     public void dispose() {

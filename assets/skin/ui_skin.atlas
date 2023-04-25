@@ -6,7 +6,7 @@ filter: Linear, Linear
 repeat: none
 EdgeOfTheGalaxyRegular
   rotate: false
-  xy: 1, 419
+  xy: 1, 363
   size: 504, 38
   orig: 504, 38
   offset: 0, 0
@@ -18,9 +18,16 @@ bg
   orig: 800, 480
   offset: 0, 0
   index: -1
+zekton rg
+  rotate: false
+  xy: 1, 403
+  size: 505, 54
+  orig: 505, 54
+  offset: 0, 0
+  index: -1
 menu_btn_down
   rotate: false
-  xy: 1, 385
+  xy: 508, 425
   size: 138, 32
   orig: 138, 32
   offset: 0, 0

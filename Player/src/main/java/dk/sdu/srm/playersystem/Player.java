@@ -18,8 +18,11 @@ public class Player extends Entity {
         AssetsManager.manager.update();
         AssetsManager.manager.finishLoading();
 
-       TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
-        this.setHealth(100);
+        TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
+
+        this.setHealth(3);
+        this.setArmor(60);
+        this.setCoins(30);
 
         characterAtlas = texture;
 

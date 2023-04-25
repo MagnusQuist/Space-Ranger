@@ -8,6 +8,7 @@ import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.main.overlays.Hud;
 import dk.sdu.srm.managers.GameStateManager;
+import dk.sdu.srm.mapsystem.Map;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
@@ -17,11 +18,12 @@ import static java.util.stream.Collectors.toList;
 public class PlayState extends State {
     private float elapsedTime = 0;
     private Hud hud;
+    private Map map;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-
+        map = new Map();
         hud = new Hud(gsm.gameData, gsm.world);
     }
     @Override
@@ -42,6 +44,9 @@ public class PlayState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         elapsedTime += Gdx.graphics.getDeltaTime();
+
+        map.render();
+
         for (Entity e : gsm.world.getEntities()) {
             PositionPart pos = e.getPart(PositionPart.class);
             sb.begin();

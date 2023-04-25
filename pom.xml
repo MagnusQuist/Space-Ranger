@@ -20,6 +20,7 @@
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
+        <module>CommonMap</module>
     </modules>
 
     <properties>
@@ -35,7 +36,7 @@
             <dependency>
                 <groupId>dk.sdu.mmmi.cbse</groupId>
                 <artifactId>shadedlibgdx</artifactId>
-                <version>1.0.45</version>
+                <version>1.0.47</version>
             </dependency>
             <dependency>
                 <groupId>com.badlogicgames.gdx</groupId>

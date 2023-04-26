@@ -1,7 +1,11 @@
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\services\IEntityProcessingService.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\World.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\PositionPart.java
+C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\mapparts\RoomPart.java
+C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\GameMap.java
+C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\mapparts\MapPart.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\GameData.java
+C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\mapparts\FloorPart.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\util\AnimationHandler.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\Entity.java
 C:\UNI\SEM4\Space-Ranger\Common\src\main\java\dk\sdu\srm\common\data\entityparts\Health.java

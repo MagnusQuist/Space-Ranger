@@ -7,7 +7,6 @@ module Core {
     requires com.badlogic.gdx;
     requires CommonEnemy;
     requires Player;
-    requires Map;
     uses IGamePluginService;
     uses IEntityProcessingService;
     uses IPostEntityProcessingService;

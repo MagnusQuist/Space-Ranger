@@ -12,6 +12,7 @@
         <module>Core</module>
         <module>Common</module>
         <module>Player</module>
+        <module>Map</module>
         <module>Enemy</module>
         <module>Bullet</module>
         <module>CommonBullet</module>
@@ -20,7 +21,6 @@
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
-        <module>CommonMap</module>
     </modules>
 
     <properties>

@@ -1,8 +1,10 @@
 dk\sdu\srm\common\services\IGamePluginService.class
 dk\sdu\srm\common\util\SPILocator.class
 dk\sdu\srm\common\services\IEntityProcessingService.class
+dk\sdu\srm\common\data\entityparts\TimerPart.class
 dk\sdu\srm\common\util\AnimationHandler.class
 dk\sdu\srm\common\data\World.class
+dk\sdu\srm\common\data\entityparts\LifePart.class
 dk\sdu\srm\common\data\entityparts\Health.class
 dk\sdu\srm\common\data\entityparts\EntityPart.class
 dk\sdu\srm\common\events\Event.class
@@ -11,4 +13,5 @@ module-info.class
 dk\sdu\srm\common\data\entityparts\PositionPart.class
 dk\sdu\srm\common\data\Entity.class
 dk\sdu\srm\common\services\IPostEntityProcessingService.class
+dk\sdu\srm\common\data\entityparts\MovingPart.class
 dk\sdu\srm\common\data\entityparts\AssetsManager.class

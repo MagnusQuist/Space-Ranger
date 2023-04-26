@@ -21,6 +21,7 @@ public class AssetsManager{
         manager.load(UI);
         manager.load(BACKGROUND);
         manager.load(LOGO);
+
     }
 
     public static void dispose(){

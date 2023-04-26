@@ -25,12 +25,12 @@
         <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
             <artifactId>shadedlibgdx</artifactId>
-            <version>1.0.43</version>
+            <version>1.0.47</version>
         </dependency>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx</artifactId>
-            <version>1.6.2</version>
+            <version>1.11.0</version>
         </dependency>
     </dependencies>
 

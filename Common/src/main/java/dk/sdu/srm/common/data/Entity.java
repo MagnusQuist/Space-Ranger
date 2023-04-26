@@ -16,6 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Entity implements Serializable {
     private final UUID ID = UUID.randomUUID();
     private int health;
+
+    private float radius;
     private AssetsManager assets;
     private Texture texture;
 
@@ -70,6 +72,14 @@ public class Entity implements Serializable {
 
     public Texture getTexture() {
         return texture;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(float r){
+        this.radius = r;
     }
 
     public String getID() {

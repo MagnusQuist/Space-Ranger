@@ -15,8 +15,6 @@
         <module>Enemy</module>
         <module>Bullet</module>
         <module>CommonBullet</module>
-        <module>Weapon</module>
-        <module>CommonWeapon</module>
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
@@ -35,18 +33,23 @@
             <dependency>
                 <groupId>dk.sdu.mmmi.cbse</groupId>
                 <artifactId>shadedlibgdx</artifactId>
-                <version>1.0.43</version>
+                <version>1.0.47</version>
             </dependency>
             <dependency>
                 <groupId>com.badlogicgames.gdx</groupId>
                 <artifactId>gdx</artifactId>
-                <version>1.6.2</version>
+                <version>1.11.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.15.0</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>

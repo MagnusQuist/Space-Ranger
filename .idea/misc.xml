@@ -13,6 +13,12 @@
         <option value="$PROJECT_DIR$/Map/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/CommonWeapon/pom.xml" />
+        <option value="$PROJECT_DIR$/Weapon/pom.xml" />
+      </set>
+    </option>
     <option name="ignoredPathMasks">
       <list>
         <option value="*.iml" />

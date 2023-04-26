@@ -22,11 +22,8 @@ public class Hud implements Disposable {
     private Entity player = null;
     private TextureAtlas hudAtlas;
     private Viewport viewport;
-    private static Label healthLabel;
     private static Label healthCount;
-    private static Label coinLabel;
     private static Label coinCount;
-    private static Label armorLabel;
     private static Label armorCount;
     private Image heart;
     private Image coin;
@@ -54,15 +51,12 @@ public class Hud implements Disposable {
         table.padTop(20);
 
         if (player != null) {
-            healthLabel = new Label("Health", skin, "ui_text");
             healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
             heart = new Image(hudAtlas.createSprite("heart"));
 
-            coinLabel = new Label("Coins", skin, "ui_text");
             coinCount = new Label(Integer.toString(player.getCoins()), skin, "ui_text");
             coin = new Image(hudAtlas.createSprite("coin"));
 
-            armorLabel = new Label("Armor", skin, "ui_text");
             armorCount = new Label(Integer.toString(player.getArmor()), skin, "ui_text");
             armor = new Image(hudAtlas.createSprite("armor"));
 

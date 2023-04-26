@@ -12,6 +12,7 @@
         <module>Core</module>
         <module>Common</module>
         <module>Player</module>
+        <module>Map</module>
         <module>Enemy</module>
         <module>Bullet</module>
         <module>CommonBullet</module>
@@ -35,7 +36,7 @@
             <dependency>
                 <groupId>dk.sdu.mmmi.cbse</groupId>
                 <artifactId>shadedlibgdx</artifactId>
-                <version>1.0.45</version>
+                <version>1.0.47</version>
             </dependency>
             <dependency>
                 <groupId>com.badlogicgames.gdx</groupId>

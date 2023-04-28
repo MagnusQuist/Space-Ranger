@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CommonWeapon" target="9" />
-      <module name="Weapon" target="9" />
+      <module name="CommonWeapon" target="1.9" />
+      <module name="Weapon" target="1.9" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

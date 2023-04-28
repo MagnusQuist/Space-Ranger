@@ -1,2 +1,3 @@
 module-info.class
 dk\sdu\srm\common\enemy\Enemy.class
+dk\sdu\srm\common\enemy\EnemyType.class

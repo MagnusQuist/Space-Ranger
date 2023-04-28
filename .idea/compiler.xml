@@ -18,17 +18,5 @@
         <module name="Common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CommonWeapon" target="1.9" />
-      <module name="Weapon" target="1.9" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Common" options="" />
-      <module name="Core" options="" />
-      <module name="Map" options="" />
-      <module name="Player" options="" />
-    </option>
   </component>
 </project>

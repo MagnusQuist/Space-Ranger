@@ -3,7 +3,6 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="LibGDXSkins">
     <file url="file://$PROJECT_DIR$/assets/skin/ui_skin.json" />
-    <file url="file://$PROJECT_DIR$/assets/skin/uiskin.json" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -11,12 +10,17 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/CommonWeapon/pom.xml" />
         <option value="$PROJECT_DIR$/Map/pom.xml" />
+        <option value="$PROJECT_DIR$/Player/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/CommonWeapon/pom.xml" />
         <option value="$PROJECT_DIR$/Weapon/pom.xml" />
+=======
+        <option value="$PROJECT_DIR$/CommonMap/pom.xml" />
+>>>>>>> main
       </set>
     </option>
     <option name="ignoredPathMasks">

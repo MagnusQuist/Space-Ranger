@@ -9,10 +9,8 @@ import dk.sdu.srm.common.util.AnimationHandler;
 public class Bullet extends Entity {
 
     public Bullet() {
-        AssetsManager.loadTexture();
-        AssetsManager.manager.update();
-        AssetsManager.manager.finishLoading();
-        TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
+
+        TextureAtlas texture = new TextureAtlas("Player/src/main/resources/movement/player.atlas");
         this.setHealth(100);
 
         characterAtlas = texture;

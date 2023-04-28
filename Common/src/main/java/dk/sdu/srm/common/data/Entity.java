@@ -1,10 +1,7 @@
 package dk.sdu.srm.common.data;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import com.badlogic.gdx.graphics.Texture;
 import dk.sdu.srm.common.data.entityparts.EntityPart;
 import dk.sdu.srm.common.util.AnimationHandler;
@@ -16,14 +13,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Entity implements Serializable {
     private final UUID ID = UUID.randomUUID();
     private int health;
-
     private float radius;
-    private AssetsManager assets;
+    private int armor;
+    private int coins;
     private Texture texture;
-
     private Sprite sprite;
     private Map<Class, EntityPart> parts;
-
     public float FRAME_TIME = 1 / 15f;
     public TextureAtlas characterAtlas;
     public AnimationHandler animationHandler;
@@ -47,10 +42,13 @@ public class Entity implements Serializable {
     public void setHealth(int health) {
         this.health = health;
     }
-
-    public void setAssets(AssetsManager assets) {
-        this.assets = assets;
+    public int getHealth() {
+        return health;
     }
+    public void setArmor(int armor) { this.armor = armor; }
+    public int getArmor() { return armor; }
+    public void setCoins(int coins) { this.coins = coins; }
+    public int getCoins() { return coins; }
 
     public void setTexture(Texture texture) {
         this.texture = texture;
@@ -62,18 +60,9 @@ public class Entity implements Serializable {
         this.sprite = sprite;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public AssetsManager getAssets() {
-        return assets;
-    }
-
     public Texture getTexture() {
         return texture;
     }
-
     public float getRadius() {
         return radius;
     }

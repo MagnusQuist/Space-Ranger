@@ -5,6 +5,8 @@ import dk.sdu.srm.common.services.IPostEntityProcessingService;
 module Core {
     requires Common;
     requires com.badlogic.gdx;
+    requires CommonEnemy;
+    requires Player;
     uses IGamePluginService;
     uses IEntityProcessingService;
     uses IPostEntityProcessingService;

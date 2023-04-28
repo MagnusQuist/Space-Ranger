@@ -1,5 +1,7 @@
 package dk.sdu.srm.common.data;
 
+import dk.sdu.srm.common.data.mapparts.MapPart;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class World {
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
+    private GameMap gameMap;
 
     public String addEntity(Entity entity) {
         entityMap.put(entity.getID(), entity);
@@ -40,5 +43,17 @@ public class World {
 
     public Entity getEntity(String ID) {
         return entityMap.get(ID);
+    }
+
+    public void addGameMap(GameMap gameMap) {
+        this.gameMap = gameMap;
+    }
+
+    public void removeMap(GameMap gameMap) {
+        this.gameMap = null;
+    }
+
+    public GameMap getGameMap() {
+        return this.gameMap;
     }
 }

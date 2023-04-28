@@ -1,17 +1,14 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import dk.sdu.srm.managers.GameStateManager;
 
 public class MenuState extends State {
@@ -27,13 +24,9 @@ public class MenuState extends State {
     public MenuState(GameStateManager gsm) {
         super(gsm);
 
-        AssetsManager.loadTexture();
-        AssetsManager.manager.update();
-        AssetsManager.manager.finishLoading();
-
-        Skin uiSkin = AssetsManager.manager.get(AssetsManager.UI);
-        Texture bg = AssetsManager.manager.get(AssetsManager.BACKGROUND);
-        Texture Title = AssetsManager.manager.get(AssetsManager.LOGO);
+        Skin uiSkin = new Skin(Gdx.files.internal("Core/src/main/resources/skin/ui_skin.json"));
+        Texture bg = new Texture("Core/src/main/resources/menu/bg.png");
+        Texture Title = new Texture("Core/src/main/resources/menu/logo.png");
 
         skin = uiSkin;
         stage = new Stage(new ScreenViewport());

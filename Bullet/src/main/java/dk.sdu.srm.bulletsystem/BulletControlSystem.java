@@ -55,7 +55,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         bullet.add(new LifePart(1));
         bullet.add(new TimerPart(3));
 
-        texture = new Texture(Gdx.files.internal("assets/bullet/animations/bullet.png"));
+        texture = new Texture("Bullet/src/main/resources/bullet/bullet.png");
 
         bullet.setTexture(texture);
 

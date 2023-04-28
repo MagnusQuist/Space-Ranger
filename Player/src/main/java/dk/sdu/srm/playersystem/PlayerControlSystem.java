@@ -61,10 +61,21 @@ public class PlayerControlSystem implements IEntityProcessingService {
             player.animationHandler.setCurrentAnimation("run");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            positionPart.setFacingState(1);
+            positionPart.setFacingState(2);
             playerx += speed * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
+
+        if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
+            if (positionPart.getFacingState() == -1 ){
+                player.animationHandler.setCurrentAnimation("idle");
+            } else if (positionPart.getFacingState() == 1) {
+                player.animationHandler.setCurrentAnimation("up_idle");
+            } else {
+                player.animationHandler.setCurrentAnimation("side_idle");
+            }
+        }
+
         positionPart.setPosition(playerx, playery);
     }
 }

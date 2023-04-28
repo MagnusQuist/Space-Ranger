@@ -1,4 +1,9 @@
 package dk.sdu.srm.mapsystem;
 
-public class Map {
+import dk.sdu.srm.common.data.GameMap;
+
+public class Map extends GameMap {
+    public Map() {
+        super();
+    }
 }

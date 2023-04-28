@@ -1,8 +1,8 @@
 dk\sdu\srm\main\states\MenuState.class
-module-info.class
 dk\sdu\srm\main\SpaceGame.class
+dk\sdu\srm\main\Main.class
+module-info.class
 dk\sdu\srm\main\overlays\Hud.class
 dk\sdu\srm\main\states\State.class
 dk\sdu\srm\managers\GameStateManager.class
 dk\sdu\srm\main\states\PlayState.class
-dk\sdu\srm\main\Main.class

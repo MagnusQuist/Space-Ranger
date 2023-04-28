@@ -13,6 +13,5 @@ module-info.class
 dk\sdu\srm\common\data\entityparts\PositionPart.class
 dk\sdu\srm\common\data\Entity.class
 dk\sdu\srm\common\services\IPostEntityProcessingService.class
-dk\sdu\srm\common\data\entityparts\AssetsManager.class
 dk\sdu\srm\common\data\mapparts\FloorPart.class
 dk\sdu\srm\common\data\mapparts\MapPart.class

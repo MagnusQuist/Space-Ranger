@@ -12,7 +12,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import dk.sdu.srm.main.SpaceGame;
 import dk.sdu.srm.playersystem.Player;
 
@@ -30,16 +29,13 @@ public class Hud implements Disposable {
     private Image armor;
 
     public Hud (GameData gameData, World world) {
-        AssetsManager.loadTexture();
-        AssetsManager.manager.update();
-        AssetsManager.manager.finishLoading();
 
         for (Entity player : world.getEntities(Player.class)) {
             this.player = player;
         }
 
-        skin = AssetsManager.manager.get(AssetsManager.UI);
-        hudAtlas = AssetsManager.manager.get(AssetsManager.HUD);
+        skin = new Skin(Gdx.files.internal("Core/src/main/resources/skin/ui_skin.json"));
+        hudAtlas = new TextureAtlas("Core/src/main/resources/skin/hud_skin.atlas");
         viewport = new FitViewport(SpaceGame.WIDTH, SpaceGame.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport);
 

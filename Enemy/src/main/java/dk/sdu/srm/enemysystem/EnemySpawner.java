@@ -25,7 +25,7 @@ public class EnemySpawner {
             float y = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getHeight() / 2 - 1);
 
             Entity enemy = new Enemy();
-            enemy.characterAtlas = new TextureAtlas("assets/enemy/animations/enemy.atlas");
+            enemy.characterAtlas = new TextureAtlas("Enemy/src/main/resources/animation/enemy.atlas");
             enemy.animationHandler = new AnimationHandler();
             enemy.animationHandler.add("enemy", new Animation<>(enemy.FRAME_TIME, enemy.characterAtlas.findRegions("enemy")));
             enemy.animationHandler.setCurrentAnimation("enemy");

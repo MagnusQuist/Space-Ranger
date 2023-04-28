@@ -3,11 +3,8 @@ package dk.sdu.srm.main;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.Map;
-import com.badlogic.gdx.maps.MapLayer;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.common.services.IGamePluginService;
 import dk.sdu.srm.common.services.IPostEntityProcessingService;
@@ -53,7 +50,6 @@ public class SpaceGame extends Game {
     @Override
     public void dispose(){
         batch.dispose();
-        AssetsManager.dispose();
     }
 
 

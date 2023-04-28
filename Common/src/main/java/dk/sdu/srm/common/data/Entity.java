@@ -1,10 +1,7 @@
 package dk.sdu.srm.common.data;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import com.badlogic.gdx.graphics.Texture;
 import dk.sdu.srm.common.data.entityparts.EntityPart;
 import dk.sdu.srm.common.util.AnimationHandler;
@@ -18,7 +15,6 @@ public class Entity implements Serializable {
     private int health;
     private int armor;
     private int coins;
-    private AssetsManager assets;
     private Texture texture;
     private Sprite sprite;
     private Map<Class, EntityPart> parts;
@@ -52,9 +48,7 @@ public class Entity implements Serializable {
     public int getArmor() { return armor; }
     public void setCoins(int coins) { this.coins = coins; }
     public int getCoins() { return coins; }
-    public void setAssets(AssetsManager assets) {
-        this.assets = assets;
-    }
+
     public void setTexture(Texture texture) {
         this.texture = texture;
     }
@@ -64,9 +58,7 @@ public class Entity implements Serializable {
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
-    public AssetsManager getAssets() {
-        return assets;
-    }
+
     public Texture getTexture() {
         return texture;
     }

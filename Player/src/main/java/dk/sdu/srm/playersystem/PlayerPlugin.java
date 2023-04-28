@@ -3,7 +3,6 @@ package dk.sdu.srm.playersystem;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
-import dk.sdu.srm.common.data.entityparts.AssetsManager;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.services.IGamePluginService;
 

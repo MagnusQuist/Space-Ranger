@@ -2,12 +2,11 @@ package dk.sdu.srm.playersystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 
 public class PlayerControlSystem implements IEntityProcessingService {

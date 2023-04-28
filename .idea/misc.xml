@@ -13,11 +13,6 @@
         <option value="$PROJECT_DIR$/Player/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/CommonMap/pom.xml" />
-      </set>
-    </option>
     <option name="ignoredPathMasks">
       <list>
         <option value="*.iml" />

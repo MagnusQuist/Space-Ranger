@@ -21,6 +21,8 @@
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
+        <module>CommonPlayer</module>
+        <module>CommonMap</module>
     </modules>
 
     <properties>

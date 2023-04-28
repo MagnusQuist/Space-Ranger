@@ -67,10 +67,10 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             case 1:
                 bullet.animationHandler.setCurrentAnimation("right");
                 break;
-            case 2:
+            case -1:
                 bullet.animationHandler.setCurrentAnimation("up");
                 break;
-            case 3:
+            case 1:
                 bullet.animationHandler.setCurrentAnimation("down");
                 break;
             default:

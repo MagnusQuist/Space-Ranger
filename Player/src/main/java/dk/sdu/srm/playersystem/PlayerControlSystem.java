@@ -30,14 +30,12 @@ public class PlayerControlSystem implements IEntityProcessingService {
             positionPart.process(gameData, player);
 
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                System.out.println("SPACE PRESSED");
-                int playerFacingState = positionPart.getFacingState();
-                for (BulletSPI bullet : getBulletSPIs()){
-                    System.out.println("INSIDE FOR LOOP");
-                    world.addEntity(bullet.createBullet(player,gameData,world));
+                    int playerFacingState = positionPart.getFacingState();
+                    for (BulletSPI bullet : getBulletSPIs()) {
+                        world.addEntity(bullet.createBullet(player, gameData, world));
+                    }
+
                 }
-                System.out.println("OUTSIDE FOR LOOP");
-            }
             updatePlayer(player);
         }
     }

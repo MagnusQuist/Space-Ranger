@@ -12,7 +12,6 @@ public class Bullet extends Entity {
         AssetsManager.loadTexture();
         AssetsManager.manager.update();
         AssetsManager.manager.finishLoading();
-
         TextureAtlas texture = AssetsManager.manager.get(AssetsManager.PLAYER);
         this.setHealth(100);
 
@@ -22,4 +21,6 @@ public class Bullet extends Entity {
         animationHandler = new AnimationHandler();
         animationHandler.add("idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("idle")));
     }
+
+
 }

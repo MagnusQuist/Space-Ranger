@@ -22,8 +22,10 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
 
     @Override
     public void process(GameData gameData, World world) {
+        float bulletspeed = 1;
         for (Entity bullet : world.getEntities(Bullet.class)){
             PositionPart positionPart = bullet.getPart(PositionPart.class);
+            positionPart.setPosition(positionPart.getX()+bulletspeed,positionPart.getY()+bulletspeed);
             TimerPart timerPart = bullet.getPart(TimerPart.class);
 
             if (timerPart.getExpiration() < 0){
@@ -42,8 +44,8 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         PositionPart playerPosition = player.getPart(PositionPart.class);
         float playerx = playerPosition.getX();
         float playery = playerPosition.getY();
+        int playerFacingState = playerPosition.getFacingState();
         float dt = gameData.getDelta();
-        float speed = 1;
 
         Entity bullet = new Bullet();
         bullet.setRadius(2);
@@ -53,11 +55,30 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         bullet.add(new LifePart(1));
         bullet.add(new TimerPart(3));
 
-        texture = new Texture(Gdx.files.internal("Bullet/src/main/resources/bullet.png"));
+        texture = new Texture(Gdx.files.internal("assets/bullet/animations/bullet.png"));
 
         bullet.setTexture(texture);
-        bullet.animationHandler.setCurrentAnimation("idle");
 
+        /*
+        switch(playerFacingState) {
+            case 0:
+                bullet.animationHandler.setCurrentAnimation("left");
+                break;
+            case 1:
+                bullet.animationHandler.setCurrentAnimation("right");
+                break;
+            case 2:
+                bullet.animationHandler.setCurrentAnimation("up");
+                break;
+            case 3:
+                bullet.animationHandler.setCurrentAnimation("down");
+                break;
+            default:
+                bullet.animationHandler.setCurrentAnimation("idle");
+        }
+
+         */
+        bullet.animationHandler.setCurrentAnimation("idle");
 
 
         System.out.println("pewpew");

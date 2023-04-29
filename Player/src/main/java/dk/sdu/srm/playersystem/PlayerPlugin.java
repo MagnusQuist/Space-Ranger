@@ -23,7 +23,7 @@ public class PlayerPlugin implements IGamePluginService {
         float y = (float) Math.random() * gameData.getDisplayHeight();
 
         Entity player = new Player();
-        player.add(new PositionPart(x, y));
+        player.add(new PositionPart(x, y, 0));
 
         return player;
     }

@@ -29,7 +29,7 @@ public class EnemySpawner {
             enemy.animationHandler = new AnimationHandler();
             enemy.animationHandler.add("enemy", new Animation<>(enemy.FRAME_TIME, enemy.characterAtlas.findRegions("enemy")));
             enemy.animationHandler.setCurrentAnimation("enemy");
-            enemy.add(new PositionPart(x, y));
+            enemy.add(new PositionPart(x, y, 0));
 
 
             world.addEntity(enemy);

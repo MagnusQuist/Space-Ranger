@@ -12,6 +12,7 @@ public class Player extends Entity {
         this.setHealth(3);
         this.setArmor(60);
         this.setCoins(30);
+        this.setCanShoot(true);
 
         characterAtlas = new TextureAtlas("Player/src/main/resources/movement/player.atlas");
 

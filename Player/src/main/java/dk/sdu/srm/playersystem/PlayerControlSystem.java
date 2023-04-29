@@ -30,11 +30,13 @@ public class PlayerControlSystem implements IEntityProcessingService {
             positionPart.process(gameData, player);
 
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+                if (player.getCanShoot()){
                     int playerFacingState = positionPart.getFacingState();
                     for (BulletSPI bullet : getBulletSPIs()) {
                         world.addEntity(bullet.createBullet(player, gameData, world));
                     }
-
+                    player.setCanShoot(false);
+                }
                 }
             updatePlayer(player);
         }

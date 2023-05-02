@@ -93,12 +93,6 @@ public class IntroductionStage  extends State {
     @Override
     public void update(float dt) {
         handleInput();
-
-        if (skip.getColor().a < 1) {
-            skip.addAction(Actions.fadeIn(1.0f));
-        } else {
-            skip.addAction(Actions.fadeOut(1.0f));
-        }
     }
 
     @Override

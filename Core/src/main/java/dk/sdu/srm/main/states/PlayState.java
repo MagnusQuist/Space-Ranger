@@ -1,8 +1,13 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameMap;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
@@ -17,6 +22,8 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayState extends State {
+    private Stage stage;
+    private Image bg;
     private float elapsedTime = 0;
     private Hud hud;
     private final GameMap map;
@@ -24,9 +31,16 @@ public class PlayState extends State {
     public PlayState(GameStateManager gsm) {
         super(gsm);
 
+        stage = new Stage(new ScreenViewport());
+        bg = new Image(new Texture("Core/src/main/resources/game_bg.png"));
+
         cam.setToOrtho(false, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
-        // Loop map SPI collection and find the first implementation
+        Group background = new Group();
+        background.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        stage.addActor(background);
+        background.addActor(bg);
 
         map = gsm.world.getGameMap();
         hud = new Hud(gsm.gameData, gsm.world);
@@ -51,6 +65,9 @@ public class PlayState extends State {
         sb.setProjectionMatrix(cam.combined);
         elapsedTime += Gdx.graphics.getDeltaTime();
 
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+        stage.draw();
+
         map.render(cam);
 
         for (Entity e : gsm.world.getEntities()) {
@@ -74,6 +91,7 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
+        stage.dispose();
         hud.dispose();
     }
 

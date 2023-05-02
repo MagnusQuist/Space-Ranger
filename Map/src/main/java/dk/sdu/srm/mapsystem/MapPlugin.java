@@ -25,7 +25,7 @@ public class MapPlugin implements IGamePluginService {
         GameMap map = new Map();
         generateFloors(map);
         populateFloors(map);
-        map.setRenderer(new OrthogonalTiledMapRenderer(map.getCurrentFloor().getCurrentRoom().getRoomMap(), 1 / 3f));
+        map.setRenderer(new OrthogonalTiledMapRenderer(map.getCurrentFloor().getCurrentRoom().getRoomMap(), 1));
         return map;
     }
 
@@ -38,7 +38,9 @@ public class MapPlugin implements IGamePluginService {
         for (FloorPart floor : map.getFloors()) {
             for (int i = 0; i < floor.getNumRooms(); i++) {
                 // TODO: Load room maps from some list somewhere :)
-                floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room01.tmx")));
+                floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room04.tmx")));
+                floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room03.tmx")));
+                floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room02.tmx")));
                 System.out.println(floor.getCurrentRoom().getRoomMap());
             }
         }

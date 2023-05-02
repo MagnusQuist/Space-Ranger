@@ -14,6 +14,8 @@
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
+        <module name="CommonPlayer" />
+        <module name="CommonMap" />
         <module name="CommonWeapon" />
         <module name="Enemy" />
         <module name="Map" />
@@ -22,7 +24,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Collision" target="17" />
-      <module name="CommonMap" target="9" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

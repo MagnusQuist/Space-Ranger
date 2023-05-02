@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Timer;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
@@ -20,6 +21,14 @@ import static java.util.stream.Collectors.toList;
 public class PlayerControlSystem implements IEntityProcessingService {
     private float speed = 100;
 
+    float delta = Gdx.graphics.getDeltaTime();
+
+    //private float fireRate = 1;
+    //private float fireDelay = 0;
+
+
+    private boolean firingOnCooldown = false;
+
     private Collection<? extends BulletSPI> getBulletSPIs() {
         return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
@@ -29,18 +38,35 @@ public class PlayerControlSystem implements IEntityProcessingService {
             PositionPart positionPart = player.getPart(PositionPart.class);
             positionPart.process(gameData, player);
 
-            if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                if (player.getCanShoot()){
-                    int playerFacingState = positionPart.getFacingState();
-                    for (BulletSPI bullet : getBulletSPIs()) {
-                        world.addEntity(bullet.createBullet(player, gameData, world));
+
+            /*if (Gdx.input.isKeyPressed(Input.Keys.SPACE) && !firingOnCooldown) {
+                firingOnCooldown = true;
+
+                int playerFacingState = positionPart.getFacingState();
+                for (BulletSPI bullet : getBulletSPIs()) {
+                    world.addEntity(bullet.createBullet(player, gameData, world));
+                }
+
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        firingOnCooldown = false;
                     }
-                    player.setCanShoot(false);
+                }, 0.2f);
+            }*/
+            if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+                int playerFacingState = positionPart.getFacingState();
+                for (BulletSPI bullet : getBulletSPIs()) {
+                    world.addEntity(bullet.createBullet(player, gameData, world));
                 }
-                }
+            }
+
+
             updatePlayer(player);
+
         }
     }
+
 
     private void updatePlayer(Entity player) {
         PositionPart positionPart = player.getPart(PositionPart.class);

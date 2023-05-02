@@ -3,6 +3,7 @@ package dk.sdu.srm.bulletsystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Timer;
 import dk.sdu.srm.common.bullet.Bullet;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
@@ -19,12 +20,18 @@ import dk.sdu.srm.playersystem.Player;
 
 public class BulletControlSystem implements IEntityProcessingService, BulletSPI {
 
+    public float fireRate = 1;
+
+    boolean canFire = true;
+
     @Override
     public void process(GameData gameData, World world) {
         for (Entity bullet : world.getEntities(Bullet.class)) {
             PositionPart positionPart = bullet.getPart(PositionPart.class);
             int bulletFacingState = positionPart.getFacingState();
             float bulletSpeed = bullet.getBulletSpeed();
+
+
 
             switch (bulletFacingState) {
                 case 0:
@@ -51,6 +58,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             positionPart.process(gameData, bullet);
 
 
+
             }
         }
 
@@ -70,9 +78,12 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
                 bullet.add(new TimerPart(1 / 2f));
                 bullet.characterAtlas = new TextureAtlas("Bullet/src/main/resources/bullet/bullet.atlas");
                 bullet.animationHandler = new AnimationHandler();
-                bullet.animationHandler.add("idle", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("idle")));
-                bullet.animationHandler.setCurrentAnimation("idle");
+                bullet.animationHandler.add("tile015", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile015")));
+                bullet.animationHandler.setCurrentAnimation("tile015");
                 bullet.setBulletSpeed(1f);
+                player.setCanShoot(false);
                 return bullet;
         }
+
+
 }

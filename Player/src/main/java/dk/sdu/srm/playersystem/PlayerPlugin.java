@@ -33,7 +33,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.setArmor(80);
 
         player.animationHandler = new AnimationHandler();
-        player.characterAtlas = new TextureAtlas("assets/player/animations/player.atlas");
+        player.characterAtlas = new TextureAtlas("Player/src/main/resources/movement/player.atlas");
 
         float FRAME_TIME = player.FRAME_TIME;
         TextureAtlas characterAtlas = player.characterAtlas;

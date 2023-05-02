@@ -38,7 +38,7 @@ public class MapPlugin implements IGamePluginService {
         for (FloorPart floor : map.getFloors()) {
             for (int i = 0; i < floor.getNumRooms(); i++) {
                 // TODO: Load room maps from some list somewhere :)
-                floor.addRoom(new RoomPart(new TmxMapLoader().load("assets/maps/floor01/room01.tmx")));
+                floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room01.tmx")));
                 System.out.println(floor.getCurrentRoom().getRoomMap());
             }
         }

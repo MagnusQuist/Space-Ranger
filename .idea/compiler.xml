@@ -10,13 +10,28 @@
         <module name="Player" />
         <module name="CommonEnemy" />
         <module name="CommonAI" />
-        <module name="Enemy" />
         <module name="AI" />
-        <module name="Map" />
         <module name="CommonBullet" />
+        <module name="Weapon" />
         <module name="Common" />
+        <module name="CommonPlayer" />
+        <module name="CommonMap" />
+        <module name="CommonWeapon" />
+        <module name="Enemy" />
+        <module name="Map" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Collision" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Common" options="" />
+      <module name="Core" options="" />
+      <module name="Map" options="" />
+      <module name="Player" options="" />
+    </option>
   </component>
 </project>

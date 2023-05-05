@@ -6,7 +6,7 @@ module Core {
     requires Common;
     requires com.badlogic.gdx;
     requires CommonEnemy;
-    requires Player;
+    requires CommonPlayer;
     uses IGamePluginService;
     uses IEntityProcessingService;
     uses IPostEntityProcessingService;

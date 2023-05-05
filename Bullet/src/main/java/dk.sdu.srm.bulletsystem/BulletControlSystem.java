@@ -16,7 +16,7 @@ import dk.sdu.srm.common.data.entityparts.TimerPart;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import com.badlogic.gdx.graphics.Texture;
 import dk.sdu.srm.common.util.AnimationHandler;
-import dk.sdu.srm.playersystem.Player;
+
 
 public class BulletControlSystem implements IEntityProcessingService, BulletSPI {
 

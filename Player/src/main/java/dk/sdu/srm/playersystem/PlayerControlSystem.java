@@ -2,14 +2,12 @@ package dk.sdu.srm.playersystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.utils.Timer;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.common.util.SPILocator;
 
@@ -93,7 +91,6 @@ public class PlayerControlSystem implements IEntityProcessingService {
             playerx += speed * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
-
         if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
             if (positionPart.getFacingState() == -1 ){
                 player.animationHandler.setCurrentAnimation("idle");

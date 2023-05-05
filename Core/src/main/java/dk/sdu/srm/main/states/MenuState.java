@@ -1,9 +1,13 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -18,18 +22,29 @@ public class MenuState extends State {
     private TextButton playBtn;
     private TextButton settingsBtn;
     private TextButton quitBtn;
-    private Texture background;
-    private Texture logo;
+    private Image bg;
+    private Image title;
+    private Music ambiantMusic;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
 
-        Skin uiSkin = new Skin(Gdx.files.internal("Core/src/main/resources/skin/ui_skin.json"));
-        Texture bg = new Texture("Core/src/main/resources/menu/bg.png");
-        Texture Title = new Texture("Core/src/main/resources/menu/logo.png");
+        skin = new Skin(Gdx.files.internal("Core/src/main/resources/skin/ui_skin.json"));
 
-        skin = uiSkin;
+        ambiantMusic = Gdx.audio.newMusic(Gdx.files.internal("Core/src/main/resources/music/main_menu.ogg"));
+        ambiantMusic.play();
+        ambiantMusic.setLooping(true);
+        ambiantMusic.setVolume(0.2f);
+
+        bg = new Image(new Texture("Core/src/main/resources/menu/bg.png"));
+        title = new Image(new Texture("Core/src/main/resources/menu/logo.png"));
+
         stage = new Stage(new ScreenViewport());
+
+        Group background = new Group();
+        background.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Group foreground = new Group();
+        foreground.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         table = new Table();
         table.setWidth(stage.getWidth());
@@ -40,6 +55,8 @@ public class MenuState extends State {
         settingsBtn = new TextButton("Settings", skin);
         quitBtn = new TextButton("Quit", skin);
 
+        title.setPosition(Gdx.graphics.getWidth() / 2 - title.getWidth() / 2, Gdx.graphics.getHeight() - title.getHeight() - 100);
+
         table.padTop(200);
         table.add(playBtn).padBottom(16);
         table.row();
@@ -47,17 +64,27 @@ public class MenuState extends State {
         table.row();
         table.add(quitBtn);
 
-        stage.addActor(table);
+        stage.addActor(background);
+        stage.addActor(foreground);
 
-        background = bg;
-        logo = Title;
+        background.addActor(bg);
+        foreground.addActor(title);
+        foreground.addActor(table);
+
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void handleInput() {
         if (playBtn.isPressed()) {
-            gsm.set(new PlayState(gsm));
+            stage.addAction(Actions.sequence(Actions.fadeOut(1), Actions.run(new Runnable() {
+                @Override
+                public void run() {
+                    gsm.set(new IntroductionStage(gsm));
+                }
+            })));
+
+            ambiantMusic.stop();
         }
 
         if (quitBtn.isPressed()) {
@@ -72,12 +99,8 @@ public class MenuState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.begin();
-        sb.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        sb.draw(logo, Gdx.graphics.getWidth() / 2 - logo.getWidth() / 2, Gdx.graphics.getHeight() - logo.getHeight() - 100);
-        sb.end();
-
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+
         stage.draw();
     }
 
@@ -85,5 +108,6 @@ public class MenuState extends State {
     public void dispose() {
         stage.dispose();
         skin.dispose();
+        ambiantMusic.dispose();
     }
 }

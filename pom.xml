@@ -19,6 +19,8 @@
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
+        <module>CommonPlayer</module>
+        <module>CommonMap</module>
     </modules>
 
     <properties>
@@ -34,7 +36,7 @@
             <dependency>
                 <groupId>dk.sdu.mmmi.cbse</groupId>
                 <artifactId>shadedlibgdx</artifactId>
-                <version>1.0.47</version>
+                <version>1.0.50</version>
             </dependency>
             <dependency>
                 <groupId>com.badlogicgames.gdx</groupId>
@@ -61,6 +63,11 @@
                 <configuration>
                     <fork>true</fork>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.15.0</version>
             </plugin>
             <!-- execute the resulting project -->
             <plugin>

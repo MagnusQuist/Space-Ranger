@@ -34,7 +34,7 @@ public class MenuState extends State {
         ambiantMusic = Gdx.audio.newMusic(Gdx.files.internal("Core/src/main/resources/music/main_menu.ogg"));
         ambiantMusic.play();
         ambiantMusic.setLooping(true);
-        ambiantMusic.setVolume(0.3f);
+        ambiantMusic.setVolume(0.2f);
 
         bg = new Image(new Texture("Core/src/main/resources/menu/bg.png"));
         title = new Image(new Texture("Core/src/main/resources/menu/logo.png"));
@@ -83,6 +83,7 @@ public class MenuState extends State {
                     gsm.set(new IntroductionStage(gsm));
                 }
             })));
+
             ambiantMusic.stop();
         }
 

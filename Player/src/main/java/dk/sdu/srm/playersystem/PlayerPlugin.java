@@ -1,5 +1,6 @@
 package dk.sdu.srm.playersystem;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dk.sdu.srm.common.data.Entity;
@@ -9,6 +10,8 @@ import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IGamePluginService;
 import dk.sdu.srm.common.util.AnimationHandler;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerPlugin implements IGamePluginService {
     private Entity player;
@@ -23,8 +26,8 @@ public class PlayerPlugin implements IGamePluginService {
     }
 
     private Entity createPlayer(GameData gameData){
-        float x = (float) Math.random() * gameData.getDisplayWidth();
-        float y = (float) Math.random() * gameData.getDisplayHeight();
+        float x = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getWidth() / 2 - 1);
+        float y = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getHeight() / 2 - 1);
 
         Entity player = new Player();
 

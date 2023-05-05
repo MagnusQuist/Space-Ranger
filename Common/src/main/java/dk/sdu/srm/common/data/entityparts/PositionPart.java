@@ -7,11 +7,12 @@ public class PositionPart implements EntityPart {
     private float x;
     private float y;
 
-    private int facingState = 2;
+    private int facingState;
 
-    public PositionPart(float x, float y) {
+    public PositionPart(float x, float y, int facingState) {
         this.x = x;
         this.y = y;
+        this.facingState = facingState;
     }
 
     public float getX() {

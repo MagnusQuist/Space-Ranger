@@ -30,6 +30,7 @@ public class PlayerPlugin implements IGamePluginService {
         float y = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getHeight() / 2 - 1);
 
         Entity player = new Player();
+        player.add(new PositionPart(x, y, 0));
 
         player.setCoins(10);
         player.setHealth(5);
@@ -49,7 +50,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.animationHandler.add("up_idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("up_idle")));
         player.animationHandler.setCurrentAnimation("idle");
 
-        player.add(new PositionPart(x, y));
+        player.add(new PositionPart(x, y, 0));
 
         return player;
     }

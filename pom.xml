@@ -16,8 +16,6 @@
         <module>Enemy</module>
         <module>Bullet</module>
         <module>CommonBullet</module>
-        <module>Weapon</module>
-        <module>CommonWeapon</module>
         <module>CommonEnemy</module>
         <module>AI</module>
         <module>CommonAI</module>
@@ -50,6 +48,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.15.0</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>

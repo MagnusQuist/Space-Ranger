@@ -1,6 +1,7 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -23,11 +24,17 @@ public class MenuState extends State {
     private TextButton quitBtn;
     private Image bg;
     private Image title;
+    private Music ambiantMusic;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
 
         skin = new Skin(Gdx.files.internal("Core/src/main/resources/skin/ui_skin.json"));
+
+        ambiantMusic = Gdx.audio.newMusic(Gdx.files.internal("Core/src/main/resources/music/main_menu.ogg"));
+        ambiantMusic.play();
+        ambiantMusic.setLooping(true);
+        ambiantMusic.setVolume(0.3f);
 
         bg = new Image(new Texture("Core/src/main/resources/menu/bg.png"));
         title = new Image(new Texture("Core/src/main/resources/menu/logo.png"));
@@ -76,6 +83,7 @@ public class MenuState extends State {
                     gsm.set(new IntroductionStage(gsm));
                 }
             })));
+            ambiantMusic.stop();
         }
 
         if (quitBtn.isPressed()) {
@@ -99,5 +107,6 @@ public class MenuState extends State {
     public void dispose() {
         stage.dispose();
         skin.dispose();
+        ambiantMusic.dispose();
     }
 }

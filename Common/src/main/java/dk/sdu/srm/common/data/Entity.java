@@ -22,11 +22,8 @@ public class Entity implements Serializable {
     public float FRAME_TIME = 1 / 15f;
     public TextureAtlas characterAtlas;
     public AnimationHandler animationHandler;
-
     private float bulletSpeed;
-
     private boolean canShoot;
-
     private float attackSpeed;
 
     public Entity() {

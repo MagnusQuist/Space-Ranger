@@ -16,16 +16,21 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayerControlSystem implements IEntityProcessingService {
-    private float speed = 100;
+    private float speed = 120;
+    private static final float BULLET_DELAY = 0.7f;
 
     @Override
     public void process(GameData gameData, World world) {
         for (Entity player : world.getEntities(Player.class)) {
+            player.setBulletTimer(player.getBulletTimer() + gameData.getDelta());
             PositionPart positionPart = player.getPart(PositionPart.class);
             positionPart.process(gameData, player);
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                for (BulletSPI bullet : getBulletSPIs()) {
-                    world.addEntity(bullet.createBullet(player, gameData, world));
+                if (player.getBulletTimer() >= BULLET_DELAY) {
+                    player.setBulletTimer(0);
+                    for (BulletSPI bullet : getBulletSPIs()) {
+                        world.addEntity(bullet.createBullet(player, gameData, world));
+                    }
                 }
             }
             updatePlayer(player);
@@ -36,6 +41,8 @@ public class PlayerControlSystem implements IEntityProcessingService {
         PositionPart positionPart = player.getPart(PositionPart.class);
         float playerx = positionPart.getX();
         float playery = positionPart.getY();
+
+        positionPart.setPreviousPosition(playerx, playery);
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             positionPart.setFacingState(1);

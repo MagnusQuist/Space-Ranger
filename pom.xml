@@ -21,6 +21,7 @@
         <module>CommonAI</module>
         <module>CommonPlayer</module>
         <module>CommonMap</module>
+        <module>Collision</module>
     </modules>
 
     <properties>

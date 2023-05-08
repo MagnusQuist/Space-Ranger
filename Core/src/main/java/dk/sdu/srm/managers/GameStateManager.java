@@ -30,6 +30,7 @@ public class GameStateManager {
     }
 
     public void update(float dt) {
+        this.gameData.setDelta(dt);
         states.peek().update(dt);
     }
 

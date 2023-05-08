@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
+import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.enemy.Enemy;
 import dk.sdu.srm.common.services.IEntityProcessingService;
@@ -13,6 +14,9 @@ public class EnemyControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
         for (Entity e : world.getEntities(Enemy.class)) {
             PositionPart positionPart = e.getPart(PositionPart.class);
+            LifePart lifePart = e.getPart(LifePart.class);
+
+            lifePart.process(gameData, e);
             positionPart.process(gameData, e);
             updateEnemy(e);
         }
@@ -24,8 +28,10 @@ public class EnemyControlSystem implements IEntityProcessingService {
         float enemyx = positionPart.getX();
         float enemyy = positionPart.getY();
 
-        enemyx += Math.random() * 20 * Gdx.graphics.getDeltaTime();
-        enemyy += Math.random() * 20 * Gdx.graphics.getDeltaTime();
+        positionPart.setPreviousPosition(enemyx, enemyy);
+
+        enemyx += Math.random() * 5 * Gdx.graphics.getDeltaTime();
+        enemyy += Math.random() * 5 * Gdx.graphics.getDeltaTime();
 
         if (enemyx > positionPart.getX()) {
             positionPart.setFacingState(1);

@@ -5,9 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameMap;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.common.services.IPostEntityProcessingService;
 import dk.sdu.srm.main.overlays.Hud;
@@ -62,17 +64,40 @@ public class PlayState extends State {
 
         for (Entity e : gsm.world.getEntities()) {
             PositionPart pos = e.getPart(PositionPart.class);
-            sb.begin();
             TextureRegion frame = e.animationHandler.getFrame();
-            if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }
-            if (pos.getFacingState() == 2 && frame.isFlipX()) { frame.flip(true, false); }
-            sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
-            sb.end();
 
+            /** DEBUG ONLY */
+            // Draw player tile
+            if (e instanceof Player) {
+                sr.begin(ShapeRenderer.ShapeType.Filled);
+                sr.setColor(Color.GOLD);
+                GameMap gameMap = gsm.world.getGameMap();
+                TiledMapTileLayer floorLayer = gameMap.getFloorLayer();
+
+                // Convert player position in 800x450 to tile position in 25x15 at center of player
+                int tileX = (int) ((pos.getX() + (frame.getRegionWidth() / 2)) / (800 / 25));
+                int tileY = (int) ((pos.getY() + (frame.getRegionHeight() / 2)) / (450 / 15));
+
+                // Get the current tile
+                TiledMapTileLayer.Cell cell = floorLayer.getCell(tileX, tileY);
+
+                // Draw the tile
+                sr.rect(cell.getTile().getOffsetX() + tileX * 32, cell.getTile().getOffsetY() + tileY * 32, 32, 32);
+
+                sr.end();
+            }
+
+            // Draw player box
             sr.begin(ShapeRenderer.ShapeType.Line);
             sr.setColor(Color.BLUE);
             sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
             sr.end();
+
+            sb.begin();
+            if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }
+            if (pos.getFacingState() == 2 && frame.isFlipX()) { frame.flip(true, false); }
+            sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
+            sb.end();
         }
 
         hud.stage.draw();

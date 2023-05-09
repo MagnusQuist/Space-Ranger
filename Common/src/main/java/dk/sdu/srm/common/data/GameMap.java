@@ -2,11 +2,11 @@ package dk.sdu.srm.common.data;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
@@ -56,6 +56,10 @@ public class GameMap implements Serializable {
 
     public void setCurrentFloor(FloorPart floor) {
         currentFloor = floor;
+    }
+
+    public TiledMapTileLayer getFloorLayer() {
+        return (TiledMapTileLayer) currentFloor.getCurrentRoom().getRoomMap().getLayers().get("floor");
     }
 
     public String getID() {

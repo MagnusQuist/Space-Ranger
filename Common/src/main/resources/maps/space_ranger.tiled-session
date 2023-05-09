@@ -5,14 +5,16 @@
     },
     "activeFile": "floor01/room01.tmx",
     "expandedProjectPaths": [
+        "floor01",
+        "."
     ],
     "fileStates": {
         "floor01/room01.tmx": {
             "scale": 0.75,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 654.6666666666666,
-                "y": -30.66666666666663
+                "x": 432,
+                "y": 228
             }
         },
         "tileset.tsx": {
@@ -32,8 +34,8 @@
     ],
     "project": "space_ranger.tiled-project",
     "recentFiles": [
-        "floor01/room01.tmx",
-        "tileset.tsx"
+        "tileset.tsx",
+        "floor01/room01.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

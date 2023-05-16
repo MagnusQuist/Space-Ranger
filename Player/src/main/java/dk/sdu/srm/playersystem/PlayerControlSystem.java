@@ -16,16 +16,21 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayerControlSystem implements IEntityProcessingService {
-    private float speed = 100;
+    private static final float SPEED = 120;
+    private static final float BULLET_DELAY = 0.7f;
 
     @Override
     public void process(GameData gameData, World world) {
         for (Entity player : world.getEntities(Player.class)) {
+            player.setBulletTimer(player.getBulletTimer() + gameData.getDelta());
             PositionPart positionPart = player.getPart(PositionPart.class);
             positionPart.process(gameData, player);
             if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-                for (BulletSPI bullet : getBulletSPIs()) {
-                    world.addEntity(bullet.createBullet(player, gameData, world));
+                if (player.getBulletTimer() >= BULLET_DELAY) {
+                    player.setBulletTimer(0);
+                    for (BulletSPI bullet : getBulletSPIs()) {
+                        world.addEntity(bullet.createBullet(player, gameData, world));
+                    }
                 }
             }
             updatePlayer(player);
@@ -37,24 +42,26 @@ public class PlayerControlSystem implements IEntityProcessingService {
         float playerx = positionPart.getX();
         float playery = positionPart.getY();
 
+        positionPart.setPreviousPosition(playerx, playery);
+
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             positionPart.setFacingState(1);
-            playery += speed * Gdx.graphics.getDeltaTime();
+            playery += SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("up");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             positionPart.setFacingState(-1);
-            playery -= speed * Gdx.graphics.getDeltaTime();
+            playery -= SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("down");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             positionPart.setFacingState(0);
-            playerx -= speed * Gdx.graphics.getDeltaTime();
+            playerx -= SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             positionPart.setFacingState(2);
-            playerx += speed * Gdx.graphics.getDeltaTime();
+            playerx += SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
         if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {

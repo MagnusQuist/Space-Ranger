@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
+import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.main.SpaceGame;
 
@@ -22,11 +23,7 @@ public class Hud implements Disposable {
     private TextureAtlas hudAtlas;
     private Viewport viewport;
     private static Label healthCount;
-    private static Label coinCount;
-    private static Label armorCount;
-    private Image heart;
-    private Image coin;
-    private Image armor;
+    private static Label healthText;
 
     public Hud (GameData gameData, World world) {
 
@@ -47,24 +44,15 @@ public class Hud implements Disposable {
         table.padTop(20);
 
         if (player != null) {
-            healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
-            heart = new Image(hudAtlas.createSprite("heart"));
+            LifePart lifePart = player.getPart(LifePart.class);
+            healthText = new Label("Health: ", skin, "ui_text");
+            //healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
 
-            coinCount = new Label(Integer.toString(player.getCoins()), skin, "ui_text");
-            coin = new Image(hudAtlas.createSprite("coin"));
-
-            armorCount = new Label(Integer.toString(player.getArmor()), skin, "ui_text");
-            armor = new Image(hudAtlas.createSprite("armor"));
-
-            table.row();
-            table.add(heart).size(18, 18).padRight(6);
-            table.add(healthCount).padRight(20);
-
-            table.add(coin).size(14, 18).padRight(6);
-            table.add(coinCount).padRight(20);
-
-            table.add(armor).size(18, 18).padRight(6);;
-            table.add(armorCount);
+            table.add(healthText).padRight(16);
+            for (int i = 0; i < lifePart.getLife(); i++) {
+                table.add(new Image(hudAtlas.createSprite("heart"))).size(18, 18).padRight(6);
+            }
+            //table.add(healthCount).padRight(20);
         }
 
         stage.addActor(table);

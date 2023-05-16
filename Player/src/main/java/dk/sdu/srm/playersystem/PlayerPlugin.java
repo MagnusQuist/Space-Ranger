@@ -6,12 +6,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
+import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IGamePluginService;
 import dk.sdu.srm.common.util.AnimationHandler;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerPlugin implements IGamePluginService {
     private Entity player;
@@ -26,15 +25,10 @@ public class PlayerPlugin implements IGamePluginService {
     }
 
     private Entity createPlayer(GameData gameData){
-        float x = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getWidth() / 2 - 1);
-        float y = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getHeight() / 2 - 1);
+        float x = 50;
+        float y = 50;
 
         Entity player = new Player();
-        player.add(new PositionPart(x, y, 0));
-
-        player.setCoins(10);
-        player.setHealth(5);
-        player.setArmor(80);
 
         player.animationHandler = new AnimationHandler();
         player.characterAtlas = new TextureAtlas("Player/src/main/resources/movement/player.atlas");
@@ -51,6 +45,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.animationHandler.setCurrentAnimation("idle");
 
         player.add(new PositionPart(x, y, 0));
+        player.add(new LifePart(5));
 
         return player;
     }

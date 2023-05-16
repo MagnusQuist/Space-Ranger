@@ -16,10 +16,6 @@ import dk.sdu.srm.common.util.AnimationHandler;
 
 public class BulletControlSystem implements IEntityProcessingService, BulletSPI {
 
-    public float fireRate = 1;
-
-    boolean canFire = true;
-
     @Override
     public void process(GameData gameData, World world) {
         for (Entity bullet : world.getEntities(Bullet.class)) {
@@ -59,19 +55,16 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         float playerx = playerPosition.getX();
         float playery = playerPosition.getY();
         int playerFacingState = playerPosition.getFacingState();
-        float dt = gameData.getDelta();
-        PositionPart bulletPosition = player.getPart(PositionPart.class);
 
         Entity bullet = new Bullet();
         bullet.add(new PositionPart(playerx, playery, playerFacingState));
         bullet.add(new LifePart(1));
-        bullet.add(new TimerPart(1 / 2f));
+        bullet.add(new TimerPart(3f));
         bullet.characterAtlas = new TextureAtlas("Bullet/src/main/resources/bullet/bullet.atlas");
         bullet.animationHandler = new AnimationHandler();
         bullet.animationHandler.add("tile015", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile015")));
         bullet.animationHandler.setCurrentAnimation("tile015");
-        bullet.setBulletSpeed(1f);
-        player.setCanShoot(false);
+        bullet.setBulletSpeed(10);
         return bullet;
     }
 }

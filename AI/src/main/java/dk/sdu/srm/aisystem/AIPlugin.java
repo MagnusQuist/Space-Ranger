@@ -5,7 +5,6 @@ import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.services.IGamePluginService;
 
 public class AIPlugin implements IGamePluginService {
-
     @Override
     public void start(GameData gameData, World world) {
 

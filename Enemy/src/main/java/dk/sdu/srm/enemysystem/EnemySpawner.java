@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
+import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.enemy.Enemy;
 import dk.sdu.srm.common.enemy.EnemyType;
@@ -21,8 +22,8 @@ public class EnemySpawner {
 
     public void createEnemies(GameData gameData, World world, EnemyType type, int amount) {
         for (int i = 0; i < amount; i++) {
-            float x = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getWidth() / 2 - 1);
-            float y = ThreadLocalRandom.current().nextFloat(0, Gdx.graphics.getHeight() / 2 - 1);
+            float x = ThreadLocalRandom.current().nextInt(60, 250 + 1);
+            float y = ThreadLocalRandom.current().nextInt(60, 250 + 1);
 
             Entity enemy = new Enemy();
             enemy.characterAtlas = new TextureAtlas("Enemy/src/main/resources/animation/enemy.atlas");
@@ -30,7 +31,7 @@ public class EnemySpawner {
             enemy.animationHandler.add("enemy", new Animation<>(enemy.FRAME_TIME, enemy.characterAtlas.findRegions("enemy")));
             enemy.animationHandler.setCurrentAnimation("enemy");
             enemy.add(new PositionPart(x, y, 0));
-
+            enemy.add(new LifePart(2));
 
             world.addEntity(enemy);
         }

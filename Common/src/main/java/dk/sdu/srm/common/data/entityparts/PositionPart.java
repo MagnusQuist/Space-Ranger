@@ -6,7 +6,8 @@ import dk.sdu.srm.common.data.GameData;
 public class PositionPart implements EntityPart {
     private float x;
     private float y;
-
+    private float previousX;
+    private float previousY;
     private int facingState;
 
     public PositionPart(float x, float y, int facingState) {
@@ -42,6 +43,19 @@ public class PositionPart implements EntityPart {
     public void setPosition(float newX, float newY) {
         this.x = newX;
         this.y = newY;
+    }
+
+    public void setPreviousPosition(float newX, float newY) {
+        this.previousX = newX;
+        this.previousY = newY;
+    }
+
+    public float getPreviousX() {
+        return previousX;
+    }
+
+    public float getPreviousY() {
+        return previousY;
     }
 
     @Override

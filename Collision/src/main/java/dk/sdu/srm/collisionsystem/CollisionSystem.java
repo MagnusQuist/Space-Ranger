@@ -12,6 +12,7 @@ import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
 import dk.sdu.srm.common.enemy.Enemy;
+import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IPostEntityProcessingService;
 
 public class CollisionSystem implements IPostEntityProcessingService {
@@ -20,8 +21,32 @@ public class CollisionSystem implements IPostEntityProcessingService {
     public void process(GameData gameData, World world) {
         for (Entity entity : world.getEntities()) {
             checkWallCollision(world, entity);
+
+            if (entity instanceof Enemy) {
+                enemyCollision(world, entity);
+            }
             if (entity instanceof Bullet) {
                 bulletCollision(world, entity);
+            }
+        }
+    }
+
+    private void enemyCollision(World world, Entity enemy) {
+        PositionPart enemyPositionPart = enemy.getPart(PositionPart.class);
+        Rectangle enemyRect = new Rectangle(enemyPositionPart.getX(), enemyPositionPart.getY(), enemy.animationHandler.getFrame().getRegionWidth(), enemy.animationHandler.getFrame().getRegionHeight());
+
+        for (Entity entity : world.getEntities()) {
+            if (entity instanceof Player) {
+                PositionPart entityPositionPart = entity.getPart(PositionPart.class);
+                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
+
+                if (enemyRect.overlaps(entityRect)) {
+                    LifePart lifePart = entity.getPart(LifePart.class);
+                    lifePart.setIsHit(true);
+                    if (lifePart.isDead()) {
+                        world.removeEntity(entity);
+                    }
+                }
             }
         }
     }
@@ -38,8 +63,8 @@ public class CollisionSystem implements IPostEntityProcessingService {
                 if (bulletRect.overlaps(entityRect)) {
                     world.removeEntity(bullet);
                     LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setLife(lifePart.getLife() - 1);
-                    if (lifePart.getLife() <= 0) {
+                    lifePart.setIsHit(true);
+                    if (lifePart.isDead()) {
                         world.removeEntity(entity);
                     }
                 }

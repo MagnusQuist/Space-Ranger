@@ -29,9 +29,6 @@ public class PlayerPlugin implements IGamePluginService {
         float y = 50;
 
         Entity player = new Player();
-        player.add(new PositionPart(x, y, 0));
-
-        player.setHealth(5);
 
         player.animationHandler = new AnimationHandler();
         player.characterAtlas = new TextureAtlas("Player/src/main/resources/movement/player.atlas");

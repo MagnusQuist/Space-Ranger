@@ -22,8 +22,8 @@ public class EnemySpawner {
 
     public void createEnemies(GameData gameData, World world, EnemyType type, int amount) {
         for (int i = 0; i < amount; i++) {
-            float x = ThreadLocalRandom.current().nextInt(10, 150 + 1);
-            float y = ThreadLocalRandom.current().nextInt(10, 150 + 1);
+            float x = ThreadLocalRandom.current().nextInt(60, 250 + 1);
+            float y = ThreadLocalRandom.current().nextInt(60, 250 + 1);
 
             Entity enemy = new Enemy();
             enemy.characterAtlas = new TextureAtlas("Enemy/src/main/resources/animation/enemy.atlas");

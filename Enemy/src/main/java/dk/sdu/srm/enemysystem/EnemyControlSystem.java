@@ -10,6 +10,8 @@ import dk.sdu.srm.common.enemy.Enemy;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 
 public class EnemyControlSystem implements IEntityProcessingService {
+    private static final float SPEED = 80;
+
     @Override
     public void process(GameData gameData, World world) {
         for (Entity e : world.getEntities(Enemy.class)) {
@@ -30,8 +32,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
         positionPart.setPreviousPosition(enemyx, enemyy);
 
-        enemyx += Math.random() * 5 * Gdx.graphics.getDeltaTime();
-        enemyy += Math.random() * 5 * Gdx.graphics.getDeltaTime();
+        enemyx += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
+        enemyy += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
 
         if (enemyx > positionPart.getX()) {
             positionPart.setFacingState(1);

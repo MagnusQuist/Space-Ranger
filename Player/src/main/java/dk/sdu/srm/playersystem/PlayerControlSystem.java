@@ -16,7 +16,7 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayerControlSystem implements IEntityProcessingService {
-    private float speed = 120;
+    private static final float SPEED = 120;
     private static final float BULLET_DELAY = 0.7f;
 
     @Override
@@ -46,22 +46,22 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             positionPart.setFacingState(1);
-            playery += speed * Gdx.graphics.getDeltaTime();
+            playery += SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("up");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             positionPart.setFacingState(-1);
-            playery -= speed * Gdx.graphics.getDeltaTime();
+            playery -= SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("down");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             positionPart.setFacingState(0);
-            playerx -= speed * Gdx.graphics.getDeltaTime();
+            playerx -= SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             positionPart.setFacingState(2);
-            playerx += speed * Gdx.graphics.getDeltaTime();
+            playerx += SPEED * Gdx.graphics.getDeltaTime();
             player.animationHandler.setCurrentAnimation("run");
         }
         if (!Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {

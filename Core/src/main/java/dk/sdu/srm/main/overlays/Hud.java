@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
+import dk.sdu.srm.common.data.entityparts.LifePart;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.main.SpaceGame;
 
@@ -43,11 +44,12 @@ public class Hud implements Disposable {
         table.padTop(20);
 
         if (player != null) {
+            LifePart lifePart = player.getPart(LifePart.class);
             healthText = new Label("Health: ", skin, "ui_text");
             //healthCount = new Label(Integer.toString(player.getHealth()), skin, "ui_text");
 
             table.add(healthText).padRight(16);
-            for (int i = 0; i < player.getHealth(); i++) {
+            for (int i = 0; i < lifePart.getLife(); i++) {
                 table.add(new Image(hudAtlas.createSprite("heart"))).size(18, 18).padRight(6);
             }
             //table.add(healthCount).padRight(20);

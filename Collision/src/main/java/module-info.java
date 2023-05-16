@@ -6,5 +6,6 @@ module Collision {
     requires com.badlogic.gdx;
     requires CommonBullet;
     requires CommonEnemy;
+    requires CommonPlayer;
     provides IPostEntityProcessingService with CollisionSystem;
 }

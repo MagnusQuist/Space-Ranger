@@ -26,7 +26,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             PositionPart positionPart = bullet.getPart(PositionPart.class);
             int bulletFacingState = positionPart.getFacingState();
             float bulletSpeed = bullet.getBulletSpeed() * Gdx.graphics.getDeltaTime();
-            bullet.setCollision(new Rectangle(positionPart.getX(), positionPart.getY(), 1 * bullet.SPRITE_SIZE, 1 * bullet.SPRITE_SIZE));
+            bullet.setCollision(new Rectangle(positionPart.getX(), positionPart.getY(), 20 * bullet.SPRITE_SIZE, 20 * bullet.SPRITE_SIZE));
 
 
             switch (bulletFacingState) {

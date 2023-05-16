@@ -104,7 +104,7 @@ public class PlayState extends State {
                 }
                 if (entity instanceof Enemy){
                     sr.begin(ShapeRenderer.ShapeType.Line);
-                    sr.setColor(Color.BLUE);
+                    sr.setColor(Color.YELLOW);
                     sr.rect(entityPos.getX(), entityPos.getY(), 16 * entity.SPRITE_SIZE, 12 * entity.SPRITE_SIZE);
                     sr.end();
                 }

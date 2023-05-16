@@ -30,7 +30,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         PositionPart positionPart = enemy.getPart(PositionPart.class);
         float enemyx = positionPart.getX();
         float enemyy = positionPart.getY();
-        enemy.setCollision(new Rectangle(enemyx, enemyy, 30 * enemy.SPRITE_SIZE, 30 * enemy.SPRITE_SIZE));
+        enemy.setCollision(new Rectangle(enemyx, enemyy, 16 * enemy.SPRITE_SIZE, 12 * enemy.SPRITE_SIZE));
 
         positionPart.setPreviousPosition(enemyx, enemyy);
 

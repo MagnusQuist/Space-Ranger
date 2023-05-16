@@ -39,6 +39,7 @@ public class CollisionSystem implements IPostEntityProcessingService {
             if (entity instanceof Player) {
                 entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
                 if (enemy.getCollision().overlaps(entity.getCollision())) {
+                    System.out.println("true");
                     if (entity.getCollisionTimer() >= COLLISION_DELAY) {
                         entity.setCollisionTimer(0);
                         LifePart lifePart = entity.getPart(LifePart.class);

@@ -2,10 +2,12 @@ package dk.sdu.srm.bulletsystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.bullet.Bullet;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
@@ -32,15 +34,20 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             switch (bulletFacingState) {
                 case 0:
                     positionPart.setPosition(positionPart.getX() - bulletSpeed, positionPart.getY());
+                    bullet.animationHandler.setCurrentAnimation("horizontal");
                     break;
                 case 1:
                     positionPart.setPosition(positionPart.getX(), positionPart.getY() + bulletSpeed);
+                    bullet.animationHandler.setCurrentAnimation("up");
                     break;
                 case -1:
                     positionPart.setPosition(positionPart.getX(), positionPart.getY() - bulletSpeed);
+                    bullet.animationHandler.setCurrentAnimation("down");
+
                     break;
                 case 2:
                     positionPart.setPosition(positionPart.getX() + bulletSpeed, positionPart.getY());
+                    bullet.animationHandler.setCurrentAnimation("horizontal");
                     break;
             }
 
@@ -68,8 +75,10 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         bullet.add(new TimerPart(3f));
         bullet.characterAtlas = new TextureAtlas("Bullet/src/main/resources/bullet/bullet.atlas");
         bullet.animationHandler = new AnimationHandler();
-        bullet.animationHandler.add("tile015", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile015")));
-        bullet.animationHandler.setCurrentAnimation("tile015");
+        bullet.animationHandler.add("horizontal", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile015")));
+        bullet.animationHandler.add("down", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile016")));
+        bullet.animationHandler.add("up", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile017")));
+
         bullet.setBulletSpeed(400);
         return bullet;
     }

@@ -51,7 +51,7 @@ public class CollisionSystem implements IPostEntityProcessingService {
         }
     }
 
-    private void bulletCollision(World world, Entity bullet) {
+    void bulletCollision(World world, Entity bullet) {
         PositionPart bulletPositionPart = bullet.getPart(PositionPart.class);
         Rectangle bulletRect = new Rectangle(bulletPositionPart.getX(), bulletPositionPart.getY(), bullet.animationHandler.getFrame().getRegionWidth(), bullet.animationHandler.getFrame().getRegionHeight());
 

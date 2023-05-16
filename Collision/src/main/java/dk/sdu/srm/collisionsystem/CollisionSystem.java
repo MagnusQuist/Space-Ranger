@@ -18,11 +18,11 @@ import dk.sdu.srm.common.services.IPostEntityProcessingService;
 
 public class CollisionSystem implements IPostEntityProcessingService {
 
-    private static final float COLLISION_DELAY = 3f;
+    private static final float COLLISION_DELAY = 1f;
 
     @Override
     public void process(GameData gameData, World world) {
-        for (Entity entity : world.getEntities()) {
+        /*for (Entity entity : world.getEntities()) {
             checkWallCollision(world, entity);
 
             if (entity instanceof Enemy) {
@@ -32,42 +32,55 @@ public class CollisionSystem implements IPostEntityProcessingService {
                 bulletCollision(world, entity);
             }
         }
-    }
 
-    private void enemyCollision(World world, Entity enemy, GameData gameData) {
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Player) {
-                entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
-                if (enemy.getCollision().overlaps(entity.getCollision())) {
-                    System.out.println("true");
-                    if (entity.getCollisionTimer() >= COLLISION_DELAY) {
-                        entity.setCollisionTimer(0);
-                        LifePart lifePart = entity.getPart(LifePart.class);
+         */
+
+        for (Entity entity : world.getEntities()){
+            for (Entity entity2 : world.getEntities()){
+
+                checkWallCollision(world, entity);
+
+                if (entity.getID().equals(entity2.getID())) {
+                    continue;
+                } else if (entity instanceof Player && entity2 instanceof Bullet){
+                    continue;
+                }
+
+                if (this.collision(entity, entity2)){
+
+                    if (entity instanceof Player){
+                        entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
+                        if (entity.getCollisionTimer() >= COLLISION_DELAY) {
+                            entity.setCollisionTimer(0);
+                            LifePart lifePart = entity.getPart(LifePart.class);
+                            lifePart.setLife(lifePart.getLife() - 1);
+                            System.out.println(lifePart.getLife());
+                            if (lifePart.getLife() <= 0) {
+                                world.removeEntity(entity);
+                            }
+                        }
+                    }
+
+                    if (entity instanceof Bullet && entity2 instanceof Enemy){
+                        world.removeEntity(entity);
+                        LifePart lifePart = entity2.getPart(LifePart.class);
                         lifePart.setLife(lifePart.getLife() - 1);
                         System.out.println(lifePart.getLife());
                         if (lifePart.getLife() <= 0) {
-                            world.removeEntity(entity);
+                            world.removeEntity(entity2);
                         }
                     }
-                }
-            }
-        }
-    }
 
-    private void bulletCollision(World world, Entity bullet) {
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Enemy) {
-                if (bullet.getCollision().overlaps(entity.getCollision())) {
-                    world.removeEntity(bullet);
-                    LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setLife(lifePart.getLife() - 1);
-                    System.out.println(lifePart.getLife());
-                    if (lifePart.getLife() <= 0) {
-                        world.removeEntity(entity);
-                    }
+                } else {
+                    entity.setCollisionTimer(COLLISION_DELAY);
                 }
             }
         }
+
+
+    }
+    private Boolean collision (Entity entity, Entity entity1){
+        return entity.getCollision().overlaps(entity1.getCollision());
     }
 
     private void checkWallCollision(World world, Entity entity) {
@@ -92,4 +105,45 @@ public class CollisionSystem implements IPostEntityProcessingService {
             }
         }
     }
+
+    /*
+    private void enemyCollision(World world, Entity enemy, GameData gameData) {
+        for (Entity entity : world.getEntities()) {
+            if (entity instanceof Player) {
+                entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
+                if (enemy.getCollision().overlaps(entity.getCollision())) {
+                    System.out.println("true");
+                    if (entity.getCollisionTimer() >= COLLISION_DELAY) {
+                        entity.setCollisionTimer(0);
+                        LifePart lifePart = entity.getPart(LifePart.class);
+                        lifePart.setLife(lifePart.getLife() - 1);
+                        System.out.println(lifePart.getLife());
+                        if (lifePart.getLife() <= 0) {
+                            world.removeEntity(entity);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+     */
+    /*
+    private void bulletCollision(World world, Entity bullet) {
+        for (Entity entity : world.getEntities()) {
+            if (entity instanceof Enemy) {
+                if (bullet.getCollision().overlaps(entity.getCollision())) {
+                    world.removeEntity(bullet);
+                    LifePart lifePart = entity.getPart(LifePart.class);
+                    lifePart.setLife(lifePart.getLife() - 1);
+                    System.out.println(lifePart.getLife());
+                    if (lifePart.getLife() <= 0) {
+                        world.removeEntity(entity);
+                    }
+                }
+            }
+        }
+    }
+
+ */
 }

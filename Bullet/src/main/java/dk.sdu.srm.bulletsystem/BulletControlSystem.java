@@ -1,13 +1,9 @@
 package dk.sdu.srm.bulletsystem;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.bullet.Bullet;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;

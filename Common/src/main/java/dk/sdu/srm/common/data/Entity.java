@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.data.entityparts.EntityPart;
 import dk.sdu.srm.common.util.AnimationHandler;
 
@@ -25,6 +26,7 @@ public class Entity implements Serializable {
     private float bulletTimer;
     private float collisionTimer;
     private float bulletSpeed;
+    private Rectangle collision;
 
     public Entity() {
         parts = new ConcurrentHashMap<>();
@@ -83,5 +85,12 @@ public class Entity implements Serializable {
     }
     public float getBulletSpeed() {
         return bulletSpeed;
+    }
+
+    public void setCollision(Rectangle collision){
+        this.collision = collision;
+    }
+    public Rectangle getCollision(){
+        return collision;
     }
 }

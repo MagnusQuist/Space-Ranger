@@ -35,16 +35,10 @@ public class CollisionSystem implements IPostEntityProcessingService {
     }
 
     private void enemyCollision(World world, Entity enemy, GameData gameData) {
-        PositionPart enemyPositionPart = enemy.getPart(PositionPart.class);
-        Rectangle enemyRect = new Rectangle(enemyPositionPart.getX(), enemyPositionPart.getY(), 16 * 1.8f, 12 * 1.8f);
-
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Player) {
                 entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
-                PositionPart entityPositionPart = entity.getPart(PositionPart.class);
-                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), 13 * 1.8f, 21 * 1.8f);
-
-                if (enemyRect.overlaps(entityRect)) {
+                if (enemy.getCollision().overlaps(entity.getCollision())) {
                     if (entity.getCollisionTimer() >= COLLISION_DELAY) {
                         entity.setCollisionTimer(0);
                         LifePart lifePart = entity.getPart(LifePart.class);
@@ -60,19 +54,14 @@ public class CollisionSystem implements IPostEntityProcessingService {
     }
 
     private void bulletCollision(World world, Entity bullet) {
-        PositionPart bulletPositionPart = bullet.getPart(PositionPart.class);
-        Rectangle bulletRect = new Rectangle(bulletPositionPart.getX(), bulletPositionPart.getY(), bullet.animationHandler.getFrame().getRegionWidth(), bullet.animationHandler.getFrame().getRegionHeight());
-
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Enemy) {
-                PositionPart entityPositionPart = entity.getPart(PositionPart.class);
-                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
-
-                if (bulletRect.overlaps(entityRect)) {
+                if (bullet.getCollision().overlaps(entity.getCollision())) {
                     world.removeEntity(bullet);
                     LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setIsHit(true);
-                    if (lifePart.isDead()) {
+                    lifePart.setLife(lifePart.getLife() - 1);
+                    System.out.println(lifePart.getLife());
+                    if (lifePart.getLife() <= 0) {
                         world.removeEntity(entity);
                     }
                 }
@@ -87,12 +76,9 @@ public class CollisionSystem implements IPostEntityProcessingService {
         MapObjects mapWalls = wallObjectsLayer.getObjects();
         Array<RectangleMapObject> walls = mapWalls.getByType(RectangleMapObject.class);
 
-        // Create rectangle from entity animation frame
-        Rectangle entityRect = new Rectangle(positionPart.getX(), positionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
-
         for (RectangleMapObject wall : walls) {
             Rectangle wallRect = wall.getRectangle();
-            if (entityRect.overlaps(wallRect)) {
+            if (entity.getCollision().overlaps(wallRect)) {
                 // Bullets that hit walls are removed
                 if (entity instanceof Bullet) {
                     // Could maybe trigger a particle effect here

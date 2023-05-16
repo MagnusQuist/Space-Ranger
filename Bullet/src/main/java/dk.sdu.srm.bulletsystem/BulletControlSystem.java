@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.bullet.Bullet;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
@@ -25,6 +26,8 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             PositionPart positionPart = bullet.getPart(PositionPart.class);
             int bulletFacingState = positionPart.getFacingState();
             float bulletSpeed = bullet.getBulletSpeed() * Gdx.graphics.getDeltaTime();
+            bullet.setCollision(new Rectangle(positionPart.getX(), positionPart.getY(), 1 * bullet.SPRITE_SIZE, 1 * bullet.SPRITE_SIZE));
+
 
             switch (bulletFacingState) {
                 case 0:

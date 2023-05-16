@@ -41,7 +41,6 @@ public class PlayerControlSystem implements IEntityProcessingService {
         PositionPart positionPart = player.getPart(PositionPart.class);
         float playerx = positionPart.getX();
         float playery = positionPart.getY();
-
         positionPart.setPreviousPosition(playerx, playery);
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {

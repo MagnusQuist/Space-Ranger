@@ -1,7 +1,10 @@
 package dk.sdu.srm.bulletsystem;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dk.sdu.srm.common.bullet.Bullet;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
@@ -21,7 +24,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         for (Entity bullet : world.getEntities(Bullet.class)) {
             PositionPart positionPart = bullet.getPart(PositionPart.class);
             int bulletFacingState = positionPart.getFacingState();
-            float bulletSpeed = bullet.getBulletSpeed();
+            float bulletSpeed = bullet.getBulletSpeed() * Gdx.graphics.getDeltaTime();
 
             switch (bulletFacingState) {
                 case 0:
@@ -64,7 +67,7 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         bullet.animationHandler = new AnimationHandler();
         bullet.animationHandler.add("tile015", new Animation<>(bullet.FRAME_TIME, bullet.characterAtlas.findRegions("tile015")));
         bullet.animationHandler.setCurrentAnimation("tile015");
-        bullet.setBulletSpeed(10);
+        bullet.setBulletSpeed(400);
         return bullet;
     }
 }

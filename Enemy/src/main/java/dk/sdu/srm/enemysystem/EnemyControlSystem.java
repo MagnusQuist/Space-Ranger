@@ -32,8 +32,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
         positionPart.setPreviousPosition(enemyx, enemyy);
 
-        enemyx += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
-        enemyy += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
+        //enemyx += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
+        //enemyy += Math.random() * SPEED * Gdx.graphics.getDeltaTime();
 
         if (enemyx > positionPart.getX()) {
             positionPart.setFacingState(1);

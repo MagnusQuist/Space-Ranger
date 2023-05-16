@@ -1,5 +1,6 @@
 package dk.sdu.srm.common.data;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.Texture;
@@ -22,6 +23,7 @@ public class Entity implements Serializable {
     public TextureAtlas characterAtlas;
     public AnimationHandler animationHandler;
     private float bulletTimer;
+    private float collisionTimer;
     private float bulletSpeed;
 
     public Entity() {
@@ -69,6 +71,12 @@ public class Entity implements Serializable {
     }
     public float getBulletTimer() {
         return bulletTimer;
+    }
+    public void setCollisionTimer(float collisionTimer){
+        this.collisionTimer = collisionTimer;
+    }
+    public float getCollisionTimer(){
+        return collisionTimer;
     }
     public void setBulletSpeed(float bulletSpeed) {
         this.bulletSpeed = bulletSpeed;

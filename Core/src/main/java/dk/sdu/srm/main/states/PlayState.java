@@ -90,7 +90,7 @@ public class PlayState extends State {
             // Draw player box
             sr.begin(ShapeRenderer.ShapeType.Line);
             sr.setColor(Color.BLUE);
-            sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
+            sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE - 1);
             sr.end();
 
             sb.begin();

@@ -1,5 +1,6 @@
 package dk.sdu.srm.collisionsystem;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -17,13 +18,15 @@ import dk.sdu.srm.common.services.IPostEntityProcessingService;
 
 public class CollisionSystem implements IPostEntityProcessingService {
 
+    private static final float COLLISION_DELAY = 3f;
+
     @Override
     public void process(GameData gameData, World world) {
         for (Entity entity : world.getEntities()) {
             checkWallCollision(world, entity);
 
             if (entity instanceof Enemy) {
-                enemyCollision(world, entity);
+                enemyCollision(world, entity, gameData);
             }
             if (entity instanceof Bullet) {
                 bulletCollision(world, entity);
@@ -31,20 +34,25 @@ public class CollisionSystem implements IPostEntityProcessingService {
         }
     }
 
-    private void enemyCollision(World world, Entity enemy) {
+    private void enemyCollision(World world, Entity enemy, GameData gameData) {
         PositionPart enemyPositionPart = enemy.getPart(PositionPart.class);
-        Rectangle enemyRect = new Rectangle(enemyPositionPart.getX(), enemyPositionPart.getY(), enemy.animationHandler.getFrame().getRegionWidth(), enemy.animationHandler.getFrame().getRegionHeight());
+        Rectangle enemyRect = new Rectangle(enemyPositionPart.getX(), enemyPositionPart.getY(), 16 * 1.8f, 12 * 1.8f);
 
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Player) {
+                entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
                 PositionPart entityPositionPart = entity.getPart(PositionPart.class);
-                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
+                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), 13 * 1.8f, 21 * 1.8f);
 
                 if (enemyRect.overlaps(entityRect)) {
-                    LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setIsHit(true);
-                    if (lifePart.isDead()) {
-                        world.removeEntity(entity);
+                    if (entity.getCollisionTimer() >= COLLISION_DELAY) {
+                        entity.setCollisionTimer(0);
+                        LifePart lifePart = entity.getPart(LifePart.class);
+                        lifePart.setLife(lifePart.getLife() - 1);
+                        System.out.println(lifePart.getLife());
+                        if (lifePart.getLife() <= 0) {
+                            world.removeEntity(entity);
+                        }
                     }
                 }
             }

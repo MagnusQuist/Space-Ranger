@@ -22,19 +22,6 @@ public class CollisionSystem implements IPostEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
-        /*for (Entity entity : world.getEntities()) {
-            checkWallCollision(world, entity);
-
-            if (entity instanceof Enemy) {
-                enemyCollision(world, entity, gameData);
-            }
-            if (entity instanceof Bullet) {
-                bulletCollision(world, entity);
-            }
-        }
-
-         */
-
         for (Entity entity : world.getEntities()){
             for (Entity entity2 : world.getEntities()){
 
@@ -101,49 +88,14 @@ public class CollisionSystem implements IPostEntityProcessingService {
 
                 // Entity wall collision
                 // Move entity back to previous position
-                positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY());
-            }
-        }
-    }
-
-    /*
-    private void enemyCollision(World world, Entity enemy, GameData gameData) {
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Player) {
-                entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
-                if (enemy.getCollision().overlaps(entity.getCollision())) {
-                    System.out.println("true");
-                    if (entity.getCollisionTimer() >= COLLISION_DELAY) {
-                        entity.setCollisionTimer(0);
-                        LifePart lifePart = entity.getPart(LifePart.class);
-                        lifePart.setLife(lifePart.getLife() - 1);
-                        System.out.println(lifePart.getLife());
-                        if (lifePart.getLife() <= 0) {
-                            world.removeEntity(entity);
-                        }
-                    }
+                switch (positionPart.getFacingState()) {
+                    case 0 -> positionPart.setPosition(positionPart.getPreviousX() + 1, positionPart.getPreviousY());
+                    case 1 -> positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY() - 1);
+                    case 2 -> positionPart.setPosition(positionPart.getPreviousX() - 1, positionPart.getPreviousY());
+                    case -1 -> positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY() + 1);
                 }
+
             }
         }
     }
-
-     */
-    /*
-    private void bulletCollision(World world, Entity bullet) {
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Enemy) {
-                if (bullet.getCollision().overlaps(entity.getCollision())) {
-                    world.removeEntity(bullet);
-                    LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setLife(lifePart.getLife() - 1);
-                    System.out.println(lifePart.getLife());
-                    if (lifePart.getLife() <= 0) {
-                        world.removeEntity(entity);
-                    }
-                }
-            }
-        }
-    }
-
- */
 }

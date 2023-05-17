@@ -76,8 +76,8 @@ public class PlayState extends State {
                 TiledMapTileLayer floorLayer = gameMap.getFloorLayer();
 
                 // Convert player position in 800x450 to tile position in 25x15 at center of player
-                int tileX = (int) ((pos.getX() + (frame.getRegionWidth() / 2)) / (800 / 25));
-                int tileY = (int) ((pos.getY() + (frame.getRegionHeight() / 2)) / (450 / 15));
+                int tileX = (int) ((pos.getX() + (e.getCollision().width / 2)) / (800 / 25));
+                int tileY = (int) ((pos.getY() + (e.getCollision().height / 2)) / (450 / 15));
 
                 // Get the current tile
                 TiledMapTileLayer.Cell cell = floorLayer.getCell(tileX, tileY);
@@ -88,12 +88,6 @@ public class PlayState extends State {
                 sr.end();
             }
 
-           /* // Draw player box
-            sr.begin(ShapeRenderer.ShapeType.Line);
-            sr.setColor(Color.BLUE);
-            sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE - 1);
-            sr.end();
-           */
             for (Entity entity : gsm.world.getEntities()){
                 PositionPart entityPos = entity.getPart(PositionPart.class);
                 if (entity instanceof Player){

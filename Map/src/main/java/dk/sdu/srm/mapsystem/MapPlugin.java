@@ -10,6 +10,10 @@ import dk.sdu.srm.common.data.mapparts.RoomPart;
 import dk.sdu.srm.common.map.Map;
 import dk.sdu.srm.common.services.IGamePluginService;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class MapPlugin implements IGamePluginService {
     private GameMap map;
     public MapPlugin() {
@@ -39,7 +43,7 @@ public class MapPlugin implements IGamePluginService {
             for (int i = 0; i < floor.getNumRooms(); i++) {
                 // TODO: Load room maps from some list somewhere :)
                 floor.addRoom(new RoomPart(new TmxMapLoader().load("Common/src/main/resources/maps/floor01/room01.tmx")));
-                System.out.println(floor.getCurrentRoom().getRoomMap());
+
             }
         }
     }

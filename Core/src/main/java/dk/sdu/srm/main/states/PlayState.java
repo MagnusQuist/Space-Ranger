@@ -88,7 +88,7 @@ public class PlayState extends State {
 
             /** DEBUG ONLY */
             // Draw player tile
-            if (e instanceof Player) {
+            if (e instanceof Player || e instanceof Enemy) {
                 sr.begin(ShapeRenderer.ShapeType.Filled);
                 sr.setColor(Color.GOLD);
                 GameMap gameMap = gsm.world.getGameMap();

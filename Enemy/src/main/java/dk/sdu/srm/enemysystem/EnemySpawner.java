@@ -3,6 +3,7 @@ package dk.sdu.srm.enemysystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
@@ -32,6 +33,7 @@ public class EnemySpawner {
             enemy.animationHandler.setCurrentAnimation("enemy");
             enemy.add(new PositionPart(x, y, 0));
             enemy.add(new LifePart(2));
+            enemy.setCollision(new Rectangle(x, y, 16 * enemy.SPRITE_SIZE, 12 * enemy.SPRITE_SIZE));
 
             world.addEntity(enemy);
         }

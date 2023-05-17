@@ -35,18 +35,22 @@ public class AStar implements AISPI {
     @Override
     public ArrayList<Vector2> findPath(ArrayList<ArrayList<TiledMapTileLayer.Cell>> cells, int startX, int startY) {
 
-        //get player position
-        //PositionPart playerPos = World.getEntities()
-        int targetX = 22;
-        int targetY = 10;
+        int targetX = 0;
+        int targetY = 5;
+
+        // Check if the target is valid
 
         if (!isValidCell(cells, targetX, targetY)) {
+            System.out.println("Target cell is invalid, cannot find a path");
             return null; // Target cell is invalid, cannot find a path
         }
 
+        System.out.println("Start: " + startX + ", " + startY);
+        System.out.println("Target: " + targetX + ", " + targetY);
         TiledMapTileLayer.Cell startCell = cells.get(startY).get(startX);
         TiledMapTileLayer.Cell targetCell = cells.get(targetY).get(targetX);
         if (startCell == null || targetCell == null) {
+            System.out.println("Start or target cell is invalid, cannot find a path");
             return null; // Start or target cell is invalid, cannot find a path
         }
 
@@ -107,6 +111,7 @@ public class AStar implements AISPI {
             }
         }
 
+        System.out.println("Could not find a path");
         return null; // No path found
     }
 

@@ -29,28 +29,31 @@ public class EnemyControlSystem implements IEntityProcessingService {
             ArrayList<Vector2> path = null;
             lifePart.process(gameData, e);
             positionPart.process(gameData, e);
-            int tileX = (int) ((positionPart.getX() + (e.getC / 2)) / (800 / 25));
-            int tileY = (int) ((positionPart.getY() + (frame.getRegionHeight() / 2)) / (450 / 15));
+            int tileX = (int) ((positionPart.getX() + (e.getCollision().width / 2)) / (800 / 25));
+            int tileY = (int) ((positionPart.getY() + (e.getCollision().height / 2)) / (450 / 15));
             for (AISPI ai : getAISPIs()) {
-                path = ai.findPath(world.getGameMap().getCurrentFloor().getCurrentRoom().getRoomMask(), (int) positionPart.getX(), (int) positionPart.getY());
+                path = ai.findPath(world.getGameMap().getCurrentFloor().getCurrentRoom().getRoomMask(), tileX, tileY);
+            }
+            if (path == null || path.size() == 0){
+                System.out.println("No path found");
+            } else {
+                updateEnemy(e, path);
             }
             //System.out.println(path);
             //print roommask to console
-            System.out.println(world.getGameMap().getCurrentFloor().getCurrentRoom().toString());
-            updateEnemy(e,path);
+            //System.out.println(world.getGameMap().getCurrentFloor().getCurrentRoom().toString());
         }
     }
 
     public void updateEnemy(Entity enemy, ArrayList<Vector2> path) {
-        // TODO: update enemy movement with AI
         PositionPart positionPart = enemy.getPart(PositionPart.class);
         float enemyx = positionPart.getX();
         float enemyy = positionPart.getY();
         enemy.setCollision(new Rectangle(enemyx, enemyy, 16 * enemy.SPRITE_SIZE, 12 * enemy.SPRITE_SIZE));
 
         positionPart.setPreviousPosition(enemyx, enemyy);
-
-        if (path != null && path.size() > 0) {
+        System.out.println(path);
+        if (!path.isEmpty()) {
             Vector2 nextPos = path.get(0);
             enemyx = nextPos.x;
             enemyy = nextPos.y;

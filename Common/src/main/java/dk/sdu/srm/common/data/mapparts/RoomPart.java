@@ -29,10 +29,10 @@ public class RoomPart implements MapPart {
     public void generateMask() {
         ArrayList<ArrayList<TiledMapTileLayer.Cell>> mask = new ArrayList<>();
         TiledMapTileLayer floor = (TiledMapTileLayer) this.map.getLayers().get(0);
-        for (int y = 0; y < floor.getWidth(); y++) {
+        for (int y = 0; y < floor.getHeight(); y++) {
             ArrayList<TiledMapTileLayer.Cell> row = new ArrayList<>();
-            for (int x = 0; x < floor.getHeight(); x++) {
-                row.add(floor.getCell(y, x));
+            for (int x = 0; x < floor.getWidth(); x++) {
+                row.add(floor.getCell(x, y));
             }
             mask.add(row);
         }

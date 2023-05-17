@@ -3,6 +3,7 @@ package dk.sdu.srm.enemysystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import dk.sdu.srm.common.ai.AISPI;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
@@ -45,6 +46,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         PositionPart positionPart = enemy.getPart(PositionPart.class);
         float enemyx = positionPart.getX();
         float enemyy = positionPart.getY();
+        enemy.setCollision(new Rectangle(enemyx, enemyy, 16 * enemy.SPRITE_SIZE, 12 * enemy.SPRITE_SIZE));
 
         positionPart.setPreviousPosition(enemyx, enemyy);
 

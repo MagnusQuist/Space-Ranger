@@ -18,6 +18,7 @@ import dk.sdu.srm.main.SpaceGame;
 
 public class Hud implements Disposable {
     public Stage stage;
+    public Table table;
     private Skin skin;
     private Entity player = null;
     private TextureAtlas hudAtlas;
@@ -36,13 +37,20 @@ public class Hud implements Disposable {
         viewport = new FitViewport(SpaceGame.WIDTH, SpaceGame.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport);
 
-        Table table = new Table();
+        table = new Table();
         table.setWidth(stage.getWidth());
 
         table.align(Align.center | Align.top);
         table.setPosition(0, Gdx.graphics.getHeight());
         table.padTop(20);
 
+
+
+        stage.addActor(table);
+    }
+
+    public void update(float dt) {
+        table.clear();
         if (player != null) {
             LifePart lifePart = player.getPart(LifePart.class);
             healthText = new Label("Health: ", skin, "ui_text");
@@ -54,11 +62,6 @@ public class Hud implements Disposable {
             }
             //table.add(healthCount).padRight(20);
         }
-
-        stage.addActor(table);
-    }
-
-    public void update(float dt) {
         stage.act(dt);
     }
 

@@ -6,24 +6,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import dk.sdu.srm.managers.GameStateManager;
 
-public class IntroductionStage  extends State {
+public class EndStage  extends State {
     private Stage stage;
     private Skin skin;
+    private TextButton replayBtn;
+    private TextButton quitBtn;
     private Table table;
     private Label skip;
     private Label title;
     private Label text;
     private Image bg;
 
-    protected IntroductionStage(GameStateManager gsm) {
+    protected EndStage(GameStateManager gsm) {
         super(gsm);
 
         stage = new Stage(new ScreenViewport());
@@ -41,30 +40,19 @@ public class IntroductionStage  extends State {
         table.align(Align.center | Align.top);
         table.setPosition(0, Gdx.graphics.getHeight() - 100);
 
-        title = new Label("Stranded in Space", skin);
-
-        text = new Label("After crash-landing on a hostile planet, " +
-                "you find yourself alone and vulnerable. But with cunning, " +
-                "courage, and a little bit of luck, you just might make it off " +
-                "this planet alive. Explore different environments " +
-                "filled with deadly creatures and treacherous terrain. Will you be able " +
-                "to outwit your enemies and find your " +
-                "way back home? The fate of your survival rests in your hands. " +
-                "Let the adventure begin!", skin, "ui_text");
-        text.setWidth(100);
-        text.setWrap(true);
-        text.setFontScale(1f);
-        text.setAlignment(Align.center);
+        replayBtn = new TextButton("Replay game", skin);
+        quitBtn = new TextButton("Quit", skin);
 
 
-        skip = new Label("Press SPACE to continue", skin, "ui_text");
-        skip.setFontScale(.8f);
+        title = new Label("You've DIED", skin);
+        title.setFontScale(3);
 
-        table.add(title);
+
+        table.add(title).padBottom(16);
         table.row();
-        table.add(text).padTop(50).width(500);
+        table.add(replayBtn).padBottom(16);
         table.row();
-        table.add(skip).padTop(100);
+        table.add(quitBtn);
 
         stage.addActor(background);
         stage.addActor(foreground);
@@ -79,13 +67,16 @@ public class IntroductionStage  extends State {
 
     @Override
     protected void handleInput() {
-        if (Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.SPACE)) {
+        if (replayBtn.isPressed()) {
             stage.addAction(Actions.sequence(Actions.fadeOut(1.0f), Actions.run(new Runnable() {
                 @Override
                 public void run() {
                     gsm.set(new PlayState(gsm));
                 }
             })));
+        }
+        if (quitBtn.isPressed()) {
+            Gdx.app.exit();
         }
     }
 

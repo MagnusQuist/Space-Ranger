@@ -6,9 +6,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameMap;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.enemy.Enemy;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.common.services.IPostEntityProcessingService;
@@ -21,6 +25,8 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class PlayState extends State {
+
+    private Stage stage;
     private float elapsedTime = 0;
     private Hud hud;
     private final GameMap map;
@@ -35,10 +41,20 @@ public class PlayState extends State {
         sr = new ShapeRenderer();
         map = gsm.world.getGameMap();
         hud = new Hud(gsm.gameData, gsm.world);
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
     }
+
     @Override
     protected void handleInput() {
-
+        if (gsm.world.getEntities(Player.class).isEmpty()) {
+            stage.addAction(Actions.sequence(Actions.fadeOut(1.0f), Actions.run(new Runnable() {
+                @Override
+                public void run() {
+                    gsm.set(new EndStage(gsm));
+                }
+            })));
+        }
     }
 
     @Override
@@ -57,6 +73,10 @@ public class PlayState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+
+        stage.draw();
+
         elapsedTime += Gdx.graphics.getDeltaTime();
 
         map.render(cam);
@@ -75,8 +95,8 @@ public class PlayState extends State {
                 TiledMapTileLayer floorLayer = gameMap.getFloorLayer();
 
                 // Convert player position in 800x450 to tile position in 25x15 at center of player
-                int tileX = (int) ((pos.getX() + (frame.getRegionWidth() / 2)) / (800 / 25));
-                int tileY = (int) ((pos.getY() + (frame.getRegionHeight() / 2)) / (450 / 15));
+                int tileX = (int) ((pos.getX() + (e.getCollision().width / 2)) / (800 / 25));
+                int tileY = (int) ((pos.getY() + (e.getCollision().height / 2)) / (450 / 15));
 
                 // Get the current tile
                 TiledMapTileLayer.Cell cell = floorLayer.getCell(tileX, tileY);
@@ -87,15 +107,30 @@ public class PlayState extends State {
                 sr.end();
             }
 
-            // Draw player box
-            sr.begin(ShapeRenderer.ShapeType.Line);
-            sr.setColor(Color.BLUE);
-            sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
-            sr.end();
+            for (Entity entity : gsm.world.getEntities()) {
+                PositionPart entityPos = entity.getPart(PositionPart.class);
+                if (entity instanceof Player) {
+                    sr.begin(ShapeRenderer.ShapeType.Line);
+                    sr.setColor(Color.BLUE);
+                    sr.rect(entityPos.getX(), entityPos.getY(), 13 * entity.SPRITE_SIZE, 21 * entity.SPRITE_SIZE);
+                    sr.end();
+                }
+                if (entity instanceof Enemy) {
+                    sr.begin(ShapeRenderer.ShapeType.Line);
+                    sr.setColor(Color.YELLOW);
+                    sr.rect(entityPos.getX(), entityPos.getY(), 16 * entity.SPRITE_SIZE, 12 * entity.SPRITE_SIZE);
+                    sr.end();
+                }
+            }
+
 
             sb.begin();
-            if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }
-            if (pos.getFacingState() == 2 && frame.isFlipX()) { frame.flip(true, false); }
+            if (pos.getFacingState() == 0 && !frame.isFlipX()) {
+                frame.flip(true, false);
+            }
+            if (pos.getFacingState() == 2 && frame.isFlipX()) {
+                frame.flip(true, false);
+            }
             sb.draw(frame, pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
             sb.end();
         }
@@ -105,6 +140,7 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
+        stage.dispose();
         hud.dispose();
     }
 

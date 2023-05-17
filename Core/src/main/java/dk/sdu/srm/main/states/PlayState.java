@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameMap;
 import dk.sdu.srm.common.data.entityparts.PositionPart;
+import dk.sdu.srm.common.enemy.Enemy;
 import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.common.services.IEntityProcessingService;
 import dk.sdu.srm.common.services.IPostEntityProcessingService;
@@ -75,8 +76,8 @@ public class PlayState extends State {
                 TiledMapTileLayer floorLayer = gameMap.getFloorLayer();
 
                 // Convert player position in 800x450 to tile position in 25x15 at center of player
-                int tileX = (int) ((pos.getX() + (frame.getRegionWidth() / 2)) / (800 / 25));
-                int tileY = (int) ((pos.getY() + (frame.getRegionHeight() / 2)) / (450 / 15));
+                int tileX = (int) ((pos.getX() + (e.getCollision().width / 2)) / (800 / 25));
+                int tileY = (int) ((pos.getY() + (e.getCollision().height / 2)) / (450 / 15));
 
                 // Get the current tile
                 TiledMapTileLayer.Cell cell = floorLayer.getCell(tileX, tileY);
@@ -87,11 +88,23 @@ public class PlayState extends State {
                 sr.end();
             }
 
-            // Draw player box
-            sr.begin(ShapeRenderer.ShapeType.Line);
-            sr.setColor(Color.BLUE);
-            sr.rect(pos.getX(), pos.getY(), frame.getRegionWidth() * e.SPRITE_SIZE, frame.getRegionHeight() * e.SPRITE_SIZE);
-            sr.end();
+            for (Entity entity : gsm.world.getEntities()){
+                PositionPart entityPos = entity.getPart(PositionPart.class);
+                if (entity instanceof Player){
+                    sr.begin(ShapeRenderer.ShapeType.Line);
+                    sr.setColor(Color.BLUE);
+                    sr.rect(entityPos.getX(), entityPos.getY(), 13 * entity.SPRITE_SIZE, 21 * entity.SPRITE_SIZE);
+                    sr.end();
+                }
+                if (entity instanceof Enemy){
+                    sr.begin(ShapeRenderer.ShapeType.Line);
+                    sr.setColor(Color.YELLOW);
+                    sr.rect(entityPos.getX(), entityPos.getY(), 16 * entity.SPRITE_SIZE, 12 * entity.SPRITE_SIZE);
+                    sr.end();
+                }
+            }
+
+
 
             sb.begin();
             if (pos.getFacingState() == 0 && !frame.isFlipX()) { frame.flip(true, false); }

@@ -46,11 +46,10 @@ public class IntroductionStage  extends State {
         text = new Label("After crash-landing on a hostile planet, " +
                 "you find yourself alone and vulnerable. But with cunning, " +
                 "courage, and a little bit of luck, you just might make it off " +
-                "this planet alive. Explore randomly generated environments " +
-                "filled with deadly creatures and treacherous terrain, scavenge " +
-                "for resources, and upgrade your skills as you go. Will you be able " +
-                "to outwit your enemies, master the art of survival, and find your " +
-                "way back home? The fate of your mission rests in your hands. " +
+                "this planet alive. Explore different environments " +
+                "filled with deadly creatures and treacherous terrain. Will you be able " +
+                "to outwit your enemies and find your " +
+                "way back home? The fate of your survival rests in your hands. " +
                 "Let the adventure begin!", skin, "ui_text");
         text.setWidth(100);
         text.setWrap(true);

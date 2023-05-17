@@ -1,5 +1,6 @@
 package dk.sdu.srm.collisionsystem;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -17,59 +18,56 @@ import dk.sdu.srm.common.services.IPostEntityProcessingService;
 
 public class CollisionSystem implements IPostEntityProcessingService {
 
+    private static final float COLLISION_DELAY = 1f;
+
     @Override
     public void process(GameData gameData, World world) {
-        for (Entity entity : world.getEntities()) {
-            checkWallCollision(world, entity);
+        for (Entity entity : world.getEntities()){
+            for (Entity entity2 : world.getEntities()){
 
-            if (entity instanceof Enemy) {
-                enemyCollision(world, entity);
-            }
-            if (entity instanceof Bullet) {
-                bulletCollision(world, entity);
-            }
-        }
-    }
+                checkWallCollision(world, entity);
 
-    private void enemyCollision(World world, Entity enemy) {
-        PositionPart enemyPositionPart = enemy.getPart(PositionPart.class);
-        Rectangle enemyRect = new Rectangle(enemyPositionPart.getX(), enemyPositionPart.getY(), enemy.animationHandler.getFrame().getRegionWidth(), enemy.animationHandler.getFrame().getRegionHeight());
+                if (entity.getID().equals(entity2.getID())) {
+                    continue;
+                } else if (entity instanceof Player && entity2 instanceof Bullet){
+                    continue;
+                }
 
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Player) {
-                PositionPart entityPositionPart = entity.getPart(PositionPart.class);
-                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
+                if (this.collision(entity, entity2)){
 
-                if (enemyRect.overlaps(entityRect)) {
-                    LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setIsHit(true);
-                    if (lifePart.isDead()) {
-                        world.removeEntity(entity);
+                    if (entity instanceof Player){
+                        entity.setCollisionTimer(entity.getCollisionTimer() + gameData.getDelta());
+                        if (entity.getCollisionTimer() >= COLLISION_DELAY) {
+                            entity.setCollisionTimer(0);
+                            LifePart lifePart = entity.getPart(LifePart.class);
+                            lifePart.setLife(lifePart.getLife() - 1);
+                            System.out.println(lifePart.getLife());
+                            if (lifePart.getLife() <= 0) {
+                                world.removeEntity(entity);
+                            }
+                        }
                     }
+
+                    if (entity instanceof Bullet && entity2 instanceof Enemy){
+                        world.removeEntity(entity);
+                        LifePart lifePart = entity2.getPart(LifePart.class);
+                        lifePart.setLife(lifePart.getLife() - 1);
+                        System.out.println(lifePart.getLife());
+                        if (lifePart.getLife() <= 0) {
+                            world.removeEntity(entity2);
+                        }
+                    }
+
+                } else {
+                    entity.setCollisionTimer(COLLISION_DELAY);
                 }
             }
         }
+
+
     }
-
-    private void bulletCollision(World world, Entity bullet) {
-        PositionPart bulletPositionPart = bullet.getPart(PositionPart.class);
-        Rectangle bulletRect = new Rectangle(bulletPositionPart.getX(), bulletPositionPart.getY(), bullet.animationHandler.getFrame().getRegionWidth(), bullet.animationHandler.getFrame().getRegionHeight());
-
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Enemy) {
-                PositionPart entityPositionPart = entity.getPart(PositionPart.class);
-                Rectangle entityRect = new Rectangle(entityPositionPart.getX(), entityPositionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
-
-                if (bulletRect.overlaps(entityRect)) {
-                    world.removeEntity(bullet);
-                    LifePart lifePart = entity.getPart(LifePart.class);
-                    lifePart.setIsHit(true);
-                    if (lifePart.isDead()) {
-                        world.removeEntity(entity);
-                    }
-                }
-            }
-        }
+    private Boolean collision (Entity entity, Entity entity1){
+        return entity.getCollision().overlaps(entity1.getCollision());
     }
 
     private void checkWallCollision(World world, Entity entity) {
@@ -79,12 +77,9 @@ public class CollisionSystem implements IPostEntityProcessingService {
         MapObjects mapWalls = wallObjectsLayer.getObjects();
         Array<RectangleMapObject> walls = mapWalls.getByType(RectangleMapObject.class);
 
-        // Create rectangle from entity animation frame
-        Rectangle entityRect = new Rectangle(positionPart.getX(), positionPart.getY(), entity.animationHandler.getFrame().getRegionWidth(), entity.animationHandler.getFrame().getRegionHeight());
-
         for (RectangleMapObject wall : walls) {
             Rectangle wallRect = wall.getRectangle();
-            if (entityRect.overlaps(wallRect)) {
+            if (entity.getCollision().overlaps(wallRect)) {
                 // Bullets that hit walls are removed
                 if (entity instanceof Bullet) {
                     // Could maybe trigger a particle effect here
@@ -93,7 +88,13 @@ public class CollisionSystem implements IPostEntityProcessingService {
 
                 // Entity wall collision
                 // Move entity back to previous position
-                positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY());
+                switch (positionPart.getFacingState()) {
+                    case 0 -> positionPart.setPosition(positionPart.getPreviousX() + 1, positionPart.getPreviousY());
+                    case 1 -> positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY() - 1);
+                    case 2 -> positionPart.setPosition(positionPart.getPreviousX() - 1, positionPart.getPreviousY());
+                    case -1 -> positionPart.setPosition(positionPart.getPreviousX(), positionPart.getPreviousY() + 1);
+                }
+
             }
         }
     }

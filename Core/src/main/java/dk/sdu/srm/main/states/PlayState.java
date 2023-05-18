@@ -153,6 +153,7 @@ public class PlayState extends State {
     public void dispose() {
         stage.dispose();
         hud.dispose();
+        ambiantMusic.dispose();
     }
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {

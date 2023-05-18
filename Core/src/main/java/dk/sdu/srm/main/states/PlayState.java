@@ -1,6 +1,7 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -31,9 +32,17 @@ public class PlayState extends State {
     private Hud hud;
     private final GameMap map;
     private ShapeRenderer sr;
+    private Music ambiantMusic;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
+
+
+        ambiantMusic = Gdx.audio.newMusic(Gdx.files.internal("Core/src/main/resources/music/play_music.ogg"));
+        ambiantMusic.play();
+        ambiantMusic.setLooping(true);
+        ambiantMusic.setVolume(0.05f);
+
 
         cam.setToOrtho(false, 25, 15);
         cam.update();
@@ -54,6 +63,8 @@ public class PlayState extends State {
                     gsm.set(new EndStage(gsm));
                 }
             })));
+
+            ambiantMusic.stop();
         }
     }
 

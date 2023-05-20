@@ -12,8 +12,6 @@ import java.lang.reflect.Array;
 public class World {
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
     private GameMap gameMap;
-    private Coords initState;
-    private Coords goalState;
     private ArrayList<ArrayList<Integer>> worldMask;
 
     public String addEntity(Entity entity) {
@@ -59,20 +57,6 @@ public class World {
 
     public GameMap getGameMap() {
         return this.gameMap;
-    }
-
-    public void setGoalState(Coords c){
-        goalState = c;
-    }
-    public Coords getGoalState(){
-        return goalState;
-    }
-    public void setInitState(Coords c){
-        initState = c;
-    }
-
-    public Coords getInitState() {
-        return initState;
     }
 
     public void loadWorldMask(ArrayList<ArrayList<Integer>> mask){

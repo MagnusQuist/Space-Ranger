@@ -22,7 +22,6 @@
         <module>CommonPlayer</module>
         <module>CommonMap</module>
         <module>Collision</module>
-        <module>AStar</module>
     </modules>
 
     <properties>

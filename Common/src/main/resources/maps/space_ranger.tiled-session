@@ -10,11 +10,11 @@
     ],
     "fileStates": {
         "floor01/room01.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 432,
-                "y": 228
+                "x": 447,
+                "y": 87
             }
         },
         "tileset.tsx": {
@@ -34,8 +34,8 @@
     ],
     "project": "space_ranger.tiled-project",
     "recentFiles": [
-        "tileset.tsx",
-        "floor01/room01.tmx"
+        "floor01/room01.tmx",
+        "tileset.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

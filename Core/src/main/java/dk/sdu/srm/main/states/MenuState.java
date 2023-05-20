@@ -109,5 +109,6 @@ public class MenuState extends State {
         stage.dispose();
         skin.dispose();
         ambiantMusic.dispose();
+        System.out.println("test");
     }
 }

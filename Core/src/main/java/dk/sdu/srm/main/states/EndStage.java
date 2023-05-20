@@ -1,6 +1,7 @@
 package dk.sdu.srm.main.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -9,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import dk.sdu.srm.common.enemy.Enemy;
+import dk.sdu.srm.common.player.Player;
 import dk.sdu.srm.managers.GameStateManager;
 
 public class EndStage  extends State {
@@ -40,7 +43,7 @@ public class EndStage  extends State {
         table.align(Align.center | Align.top);
         table.setPosition(0, Gdx.graphics.getHeight() - 100);
 
-        replayBtn = new TextButton("Replay game", skin);
+        replayBtn = new TextButton("Replay game *NOT WORKING*", skin);
         quitBtn = new TextButton("Quit", skin);
 
 

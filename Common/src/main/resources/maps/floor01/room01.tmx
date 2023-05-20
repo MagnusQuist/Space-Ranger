@@ -41,11 +41,11 @@
  </layer>
  <objectgroup id="3" name="wallObjects">
   <object id="1" x="792.031" y="9.2424" width="8.03031" height="470.667"/>
-  <object id="2" x="704.667" y="224" width="87.2083" height="8.33333"/>
-  <object id="3" x="448.167" y="225.333" width="161.167" height="6.6667"/>
+  <object id="2" x="704.326" y="224" width="87.5492" height="31.7917"/>
+  <object id="3" x="448.167" y="225.333" width="159.099" height="30.1667"/>
   <object id="4" x="447.86" y="0.100347" width="8.35227" height="223.898"/>
-  <object id="5" x="456.25" y="0" width="343.708" height="9.0417"/>
-  <object id="6" x="0.0744365" y="-0.0151724" width="447.662" height="8.79883"/>
+  <object id="5" x="456.25" y="0" width="343.708" height="25.7084"/>
+  <object id="6" x="0.0744365" y="-0.0151724" width="447.662" height="24.7988"/>
   <object id="7" x="0.0303034" y="8.99999" width="8" height="439.042"/>
   <object id="8" x="0.0909091" y="448" width="791.727" height="31.9091"/>
  </objectgroup>

@@ -91,49 +91,11 @@ public class PlayState extends State {
         elapsedTime += Gdx.graphics.getDeltaTime();
 
         map.render(cam);
-        map.debug();
+        //map.debug();
 
         for (Entity e : gsm.world.getEntities()) {
             PositionPart pos = e.getPart(PositionPart.class);
             TextureRegion frame = e.animationHandler.getFrame();
-
-            /** DEBUG ONLY */
-            // Draw player tile
-            if (e instanceof Player || e instanceof Enemy) {
-                sr.begin(ShapeRenderer.ShapeType.Filled);
-                sr.setColor(Color.GOLD);
-                GameMap gameMap = gsm.world.getGameMap();
-                TiledMapTileLayer floorLayer = gameMap.getFloorLayer();
-
-                // Convert player position in 800x450 to tile position in 25x15 at center of player
-                int tileX = (int) ((pos.getX() + (e.getCollision().width / 2)) / (800 / 25));
-                int tileY = (int) ((pos.getY() + (e.getCollision().height / 2)) / (450 / 15));
-
-                // Get the current tile
-                TiledMapTileLayer.Cell cell = floorLayer.getCell(tileX, tileY);
-
-                // Draw the tile
-                sr.rect(cell.getTile().getOffsetX() + tileX * 32, cell.getTile().getOffsetY() + tileY * 32, 32, 32);
-
-                sr.end();
-            }
-
-            for (Entity entity : gsm.world.getEntities()) {
-                PositionPart entityPos = entity.getPart(PositionPart.class);
-                if (entity instanceof Player) {
-                    sr.begin(ShapeRenderer.ShapeType.Line);
-                    sr.setColor(Color.BLUE);
-                    sr.rect(entityPos.getX(), entityPos.getY(), 13 * entity.SPRITE_SIZE, 21 * entity.SPRITE_SIZE);
-                    sr.end();
-                }
-                if (entity instanceof Enemy) {
-                    sr.begin(ShapeRenderer.ShapeType.Line);
-                    sr.setColor(Color.YELLOW);
-                    sr.rect(entityPos.getX(), entityPos.getY(), 16 * entity.SPRITE_SIZE, 12 * entity.SPRITE_SIZE);
-                    sr.end();
-                }
-            }
-
 
             sb.begin();
             if (pos.getFacingState() == 0 && !frame.isFlipX()) {

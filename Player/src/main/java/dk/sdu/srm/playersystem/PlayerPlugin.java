@@ -44,7 +44,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.animationHandler.add("down", new Animation<>(FRAME_TIME, characterAtlas.findRegions("down")));
         player.animationHandler.add("up_idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("up_idle")));
         player.animationHandler.setCurrentAnimation("idle");
-        player.setCollision(new Rectangle(x, y, 13 * player.SPRITE_SIZE, 22 * player.SPRITE_SIZE));
+        player.setCollision(new Rectangle(x, y, 13 * player.SPRITE_SIZE, 21 * player.SPRITE_SIZE));
         player.add(new PositionPart(x, y, 0));
         player.add(new LifePart(5));
 

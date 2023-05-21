@@ -20,7 +20,7 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 public class EnemyControlSystem implements IEntityProcessingService {
-    private static final float SPEED = 2;
+    private static final float SPEED = 1 * Gdx.graphics.getDeltaTime();
 
     @Override
     public void process(GameData gameData, World world) {

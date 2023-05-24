@@ -32,17 +32,9 @@ public class PlayState extends State {
     private Hud hud;
     private final GameMap map;
     private ShapeRenderer sr;
-    private Music ambiantMusic;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-
-
-        ambiantMusic = Gdx.audio.newMusic(Gdx.files.internal("Core/src/main/resources/music/play_music.ogg"));
-        ambiantMusic.play();
-        ambiantMusic.setLooping(true);
-        ambiantMusic.setVolume(0.05f);
-
 
         cam.setToOrtho(false, 25, 15);
         cam.update();
@@ -63,8 +55,6 @@ public class PlayState extends State {
                     gsm.set(new EndStage(gsm));
                 }
             })));
-
-            ambiantMusic.stop();
         }
     }
 
@@ -115,7 +105,6 @@ public class PlayState extends State {
     public void dispose() {
         stage.dispose();
         hud.dispose();
-        ambiantMusic.dispose();
     }
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
@@ -125,6 +114,4 @@ public class PlayState extends State {
     private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
-
-    // Collection of Map SPI maybe :)
 }

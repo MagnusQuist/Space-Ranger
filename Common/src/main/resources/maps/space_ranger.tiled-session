@@ -5,8 +5,8 @@
     },
     "activeFile": "floor01/room01.tmx",
     "expandedProjectPaths": [
-        "floor01",
-        "."
+        ".",
+        "floor01"
     ],
     "fileStates": {
         "floor01/room01.tmx": {
@@ -34,8 +34,8 @@
     ],
     "project": "space_ranger.tiled-project",
     "recentFiles": [
-        "floor01/room01.tmx",
-        "tileset.tsx"
+        "tileset.tsx",
+        "floor01/room01.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

@@ -51,9 +51,6 @@ public class CollisionSystemTest {
         // Mock the world's getEntities() method to return the list of entities
         Mockito.when(world.getEntities()).thenReturn(entities);
 
-        // Perform the bullet collision check
-        collisionSystem.bulletCollision(world, bullet);
-
         // Verify that the bullet has been removed from the world
         Mockito.verify(world).removeEntity(bullet);
 

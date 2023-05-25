@@ -4,9 +4,6 @@ import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
 import dk.sdu.srm.common.player.Player;
 import org.junit.jupiter.api.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

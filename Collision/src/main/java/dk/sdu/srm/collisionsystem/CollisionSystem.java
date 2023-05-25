@@ -1,6 +1,5 @@
 package dk.sdu.srm.collisionsystem;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -33,9 +32,6 @@ public class CollisionSystem implements IPostEntityProcessingService {
                     continue;
                 }
 
-    void bulletCollision(World world, Entity bullet) {
-        PositionPart bulletPositionPart = bullet.getPart(PositionPart.class);
-        Rectangle bulletRect = new Rectangle(bulletPositionPart.getX(), bulletPositionPart.getY(), bullet.animationHandler.getFrame().getRegionWidth(), bullet.animationHandler.getFrame().getRegionHeight());
                 if (this.collision(entity, entity2)){
 
                     if (entity instanceof Player){

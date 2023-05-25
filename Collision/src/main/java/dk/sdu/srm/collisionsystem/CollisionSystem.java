@@ -58,7 +58,7 @@ public class CollisionSystem implements IPostEntityProcessingService {
                         }
                     }
 
-                } else {
+                } else if (entity instanceof Enemy) {
                     entity.setCollisionTimer(COLLISION_DELAY);
                 }
             }

@@ -61,7 +61,6 @@ public class CollisionSystemTest {
         LifePart enemyLifePart = enemy.getPart(LifePart.class);
         verify(enemyLifePart.isHit());
 
-        //Det her giver fejl... Og aids :)
     }
 
 }

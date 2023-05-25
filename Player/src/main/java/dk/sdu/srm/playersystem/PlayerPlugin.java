@@ -3,6 +3,7 @@ package dk.sdu.srm.playersystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
 import dk.sdu.srm.common.data.World;
@@ -43,7 +44,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.animationHandler.add("down", new Animation<>(FRAME_TIME, characterAtlas.findRegions("down")));
         player.animationHandler.add("up_idle", new Animation<>(FRAME_TIME, characterAtlas.findRegions("up_idle")));
         player.animationHandler.setCurrentAnimation("idle");
-
+        player.setCollision(new Rectangle(x, y, 13 * player.SPRITE_SIZE, 21 * player.SPRITE_SIZE));
         player.add(new PositionPart(x, y, 0));
         player.add(new LifePart(5));
 

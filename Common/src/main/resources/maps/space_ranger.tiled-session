@@ -5,16 +5,16 @@
     },
     "activeFile": "floor01/room01.tmx",
     "expandedProjectPaths": [
-        "floor01",
-        "."
+        ".",
+        "floor01"
     ],
     "fileStates": {
         "floor01/room01.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 432,
-                "y": 228
+                "x": 447,
+                "y": 87
             }
         },
         "tileset.tsx": {

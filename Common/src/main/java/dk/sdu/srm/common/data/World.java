@@ -7,10 +7,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.lang.reflect.Array;
 
 public class World {
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
     private GameMap gameMap;
+    private ArrayList<ArrayList<Integer>> worldMask;
 
     public String addEntity(Entity entity) {
         entityMap.put(entity.getID(), entity);
@@ -55,5 +57,17 @@ public class World {
 
     public GameMap getGameMap() {
         return this.gameMap;
+    }
+
+    public void loadWorldMask(ArrayList<ArrayList<Integer>> mask){
+        worldMask = mask;
+    }
+    public ArrayList<ArrayList<Integer>> getWorldMask(){
+        return worldMask;
+    }
+    public int getWorldMaskRows(){ return worldMask.get(0).size()-1; }
+    public int getWorldMaskColumns(){ return worldMask.size(); }
+    public boolean isAvailable(int x, int y){
+        return worldMask.get(x).get(y)==0;
     }
 }

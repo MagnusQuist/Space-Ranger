@@ -2,6 +2,7 @@ package dk.sdu.srm.playersystem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Rectangle;
 import dk.sdu.srm.common.bullet.BulletSPI;
 import dk.sdu.srm.common.data.Entity;
 import dk.sdu.srm.common.data.GameData;
@@ -41,8 +42,8 @@ public class PlayerControlSystem implements IEntityProcessingService {
         PositionPart positionPart = player.getPart(PositionPart.class);
         float playerx = positionPart.getX();
         float playery = positionPart.getY();
-
         positionPart.setPreviousPosition(playerx, playery);
+        player.setCollision(new Rectangle(playerx, playery, 13 * player.SPRITE_SIZE, 21 * player.SPRITE_SIZE));
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             positionPart.setFacingState(1);
